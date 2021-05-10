@@ -1,0 +1,7 @@
+{
+    "php.validate.run": "onType",
+    "php.suggest.basic": false,
+    "php.validate.enable": false,
+    "typescript.format.enable": false,
+    "editor.formatOnSave": true
+}
