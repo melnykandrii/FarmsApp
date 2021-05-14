@@ -1,18 +1,13 @@
 import React from "react";
-import { SafeAreaView, StatusBar, Text, View, StyleSheet } from "react-native";
-import styled from "styled-components/native";
-
-const SettingsSafeAreaView = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-`;
+import { Text, View, StyleSheet } from "react-native";
+import { SafeArea } from "../../../components/utils/safe-area.component";
 
 export const SettingsScreen = () => (
-  <SettingsSafeAreaView>
+  <SafeArea>
     <View style={styles.container}>
       <Text>Settings Screen!</Text>
     </View>
-  </SettingsSafeAreaView>
+  </SafeArea>
 );
 
 const styles = StyleSheet.create({

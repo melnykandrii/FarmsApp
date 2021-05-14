@@ -62,6 +62,6 @@ export const AmenityImage = styled.Image`
 `;
 
 export const SvgIcon = styled(SvgXml)`
-  width: ${(props) => props.theme.sizes[3]};
-  height: ${(props) => props.theme.sizes[3]};
+  width: ${(props) => props.theme.sizes[2]};
+  height: ${(props) => props.theme.sizes[2]};
 `;
