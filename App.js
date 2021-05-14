@@ -11,7 +11,7 @@ import {
   Domine_400Regular,
 } from "@expo-google-fonts/domine";
 import { theme } from "./src/infrastructure/theme";
-import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
+import TabNavigation from "./src/features/restaurants/navigation/bottom.tab.navigation";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -33,7 +33,7 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsScreen />
+        <TabNavigation />
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
