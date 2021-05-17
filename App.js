@@ -12,6 +12,7 @@ import {
 } from "@expo-google-fonts/domine";
 import { theme } from "./src/infrastructure/theme";
 import TabNavigation from "./src/features/restaurants/navigation/bottom.tab.navigation";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -33,7 +34,9 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <TabNavigation />
+        <RestaurantsContextProvider>
+          <TabNavigation />
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
