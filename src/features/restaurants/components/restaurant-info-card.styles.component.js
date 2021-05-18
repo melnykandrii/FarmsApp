@@ -52,13 +52,13 @@ export const CloseLabel = styled.Text`
 `;
 
 export const AmenityIcon = styled(MaterialIcons)`
-  font-size: ${(props) => props.theme.sizes[2]};
+  font-size: ${(props) => props.theme.sizes[1]};
   color: ${(props) => props.theme.colors.ui.primary};
 `;
 
 export const AmenityImage = styled.Image`
-  width: ${(props) => props.theme.sizes[3]};
-  height: ${(props) => props.theme.sizes[3]};
+  width: ${(props) => props.theme.sizes[2]};
+  height: ${(props) => props.theme.sizes[2]};
 `;
 
 export const SvgIcon = styled(SvgXml)`
