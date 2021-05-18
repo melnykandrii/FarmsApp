@@ -3,5 +3,7 @@
     "php.suggest.basic": false,
     "php.validate.enable": false,
     "typescript.format.enable": false,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.preferredDarkColorTheme": "Abyss"
 }
