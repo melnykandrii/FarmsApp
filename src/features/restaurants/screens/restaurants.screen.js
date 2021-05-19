@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
-import { FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+import { FlatList, RefreshControl } from "react-native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utils/safe-area.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { LoadingState } from "../../../components/utils/loading-state.component";
-
-const SearchView = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
+import { theme } from "../../../infrastructure/theme/index";
+import { Search } from "../components/search.component";
 
 const RestautantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -17,23 +14,54 @@ const RestautantList = styled(FlatList).attrs({
   },
 })``;
 
+const wait = (timeout) => {
+  return new Promise((resolve) => setTimeout(resolve, timeout));
+};
+
 export const RestaurantsScreen = () => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(10).then(() => setRefreshing(false));
+  }, []);
+
   if (isLoading && !error) {
-    return <LoadingState />;
+    return (
+      <SafeArea>
+        <Search />
+        <LoadingState />
+      </SafeArea>
+    );
   }
+
+  if (refreshing) {
+    return (
+      <SafeArea>
+        <Search />
+        <LoadingState />
+      </SafeArea>
+    );
+  }
+
   return (
     <SafeArea>
-      <SearchView>
-        <Searchbar placeholder="Search" />
-      </SearchView>
-
+      <Search />
       <RestautantList
         data={restaurants}
         renderItem={({ item }) => {
           return <RestaurantInfoCard restaurant={item} />;
         }}
         keyExtractor={(item) => item.name}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={theme.colors.ui.error}
+            colors={[theme.colors.ui.error]}
+          />
+        }
       />
     </SafeArea>
   );

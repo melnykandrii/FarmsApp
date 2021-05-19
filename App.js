@@ -35,10 +35,10 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-      <LocationContextProvider>
-        <RestaurantsContextProvider>
-          <TabNavigation />
-        </RestaurantsContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <TabNavigation />
+          </RestaurantsContextProvider>
         </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
