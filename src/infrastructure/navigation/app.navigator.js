@@ -1,14 +1,14 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { RestaurantsScreen } from "../screens/restaurants.screen";
-import { MapScreen } from "../screens/map.screen";
-import { SettingsScreen } from "../screens/settings.screen";
+import { MapScreen } from "../../features/map/screens/map.screen";
+import { SettingsScreen } from "../../features/restaurants/screens/settings.screen";
 import { Ionicons } from "@expo/vector-icons";
+import { RestaurantsNavigator } from "./restaurants.stack.navigator";
 
 const Tab = createBottomTabNavigator();
 
-export default function TabNavigation() {
+export const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -31,10 +31,10 @@ export default function TabNavigation() {
           inactiveTintColor: "gray",
         }}
       >
-        <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+        <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
         <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
-}
+};

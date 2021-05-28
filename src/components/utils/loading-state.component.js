@@ -3,13 +3,15 @@ import styled from "styled-components/native";
 import { theme } from "../../infrastructure/theme/index";
 
 const LoadingView = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 `;
 const Activity = styled.ActivityIndicator.attrs({
   color: theme.colors.ui.error,
-})``;
+})`
+  margin-left: -35px;
+`;
 /*const RestautantList = styled(FlatList).attrs({
     contentContainerStyle: {
       padding: 16,
@@ -17,6 +19,7 @@ const Activity = styled.ActivityIndicator.attrs({
   })``;*/
 const LoadingText = styled.Text`
   color: ${(props) => props.theme.colors.ui.error};
+  margin-left: -25px;
 `;
 export const LoadingState = () => {
   return (

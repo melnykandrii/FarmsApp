@@ -25,7 +25,8 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     address = "100 some address street",
     isOpenNow = true,
     rating = 3.6,
-    isCloseTemporary = true,
+    isClosedTemporarily = true,
+    placeId,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -37,12 +38,12 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         <Title>{name}</Title>
         <SectionIcons>
           <RatingIcon>
-            {ratingArray.map(() => (
-              <SvgIcon xml={star} />
+            {ratingArray.map((_, i) => (
+              <SvgIcon key={`star-${placeId}-${i}`} xml={star} />
             ))}
           </RatingIcon>
           <EndIconsSection>
-            {isCloseTemporary && <CloseLabel>CLOSED TEMPORARILY</CloseLabel>}
+            {isClosedTemporarily && <CloseLabel>CLOSED TEMPORARILY</CloseLabel>}
             {isOpenNow && <SvgIcon xml={open} />}
             <AmenityImage source={{ uri: icon }} />
           </EndIconsSection>

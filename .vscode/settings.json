@@ -4,6 +4,6 @@
     "php.validate.enable": false,
     "typescript.format.enable": false,
     "editor.formatOnSave": true,
-    "workbench.colorTheme": "Visual Studio Dark",
-    "workbench.preferredDarkColorTheme": "Abyss"
+    "workbench.colorTheme": "Kimbie Dark",
+    "workbench.preferredDarkColorTheme": "Kimbie Dark"
 }
