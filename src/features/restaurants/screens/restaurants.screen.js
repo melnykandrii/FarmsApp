@@ -1,18 +1,16 @@
-import React, { useContext } from "react";
-import {
-  FlatList,
-  RefreshControl,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-  Platform,
-} from "react-native";
-import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import React, { useContext, useState, useCallback } from "react";
+import { FlatList, RefreshControl, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
+
+import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utils/safe-area.component";
-import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { LoadingState } from "../../../components/utils/loading-state.component";
 import { theme } from "../../../infrastructure/theme/index";
 import { Search } from "../components/search.component";
+import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
+
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 const RestautantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -25,10 +23,12 @@ const wait = (timeout) => {
 };
 
 export const RestaurantsScreen = ({ navigation }) => {
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
-  const [refreshing, setRefreshing] = React.useState(false);
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
+  const [isToggled, setIsToggled] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
-  const onRefresh = React.useCallback(() => {
+  const onRefresh = useCallback(() => {
     setRefreshing(true);
     wait(10).then(() => setRefreshing(false));
   }, []);
@@ -36,7 +36,10 @@ export const RestaurantsScreen = ({ navigation }) => {
   if (refreshing) {
     return (
       <SafeArea>
-        <Search />
+        <Search
+          isFavouritesToggled={isToggled}
+          onFavouritesToggled={() => setIsToggled(!isToggled)}
+        />
         <LoadingState />
       </SafeArea>
     );
@@ -45,7 +48,16 @@ export const RestaurantsScreen = ({ navigation }) => {
   return (
     <SafeArea>
       {isLoading && <LoadingState />}
-      <Search />
+      <Search
+        isFavouritesToggled={isToggled}
+        onFavouritesToggled={() => setIsToggled(!isToggled)}
+      />
+      {isToggled && (
+        <FavouritesBar
+          favourites={favourites}
+          onNavigate={navigation.navigate}
+        />
+      )}
       <RestautantList
         data={restaurants}
         renderItem={({ item }) => {

@@ -5,11 +5,11 @@ import { SvgXml } from "react-native-svg";
 
 export const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
-  margin-bottom: ${(props) => props.theme.space[3]};
+  margin-bottom: ${(props) => props.theme.space[2]};
 `;
 
 export const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[3]};
+  padding: ${(props) => props.theme.space[2]};
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 

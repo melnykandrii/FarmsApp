@@ -1,4 +1,5 @@
 import React from "react";
+
 import styled from "styled-components/native";
 import { Platform } from "react-native";
 import { WebView } from "react-native-webview";
@@ -12,7 +13,6 @@ height: 100px;
 
 const CompactWebView = styled(WebView)`
   border-radius: 10px;
-  overflow: hidden;
   width: 120px;
   height: 100px;
 `;
@@ -25,8 +25,8 @@ const Item = styled.View`
 
 const isAndroid = Platform.OS === "android";
 
-export const RestaurantCompactInfo = ({ restaurant }) => {
-  const Image = isAndroid ? CompactWebView : CompactImage;
+export const RestaurantCompactInfo = ({ restaurant, isMap }) => {
+  const Image = isAndroid && isMap ? CompactWebView : CompactImage;
   return (
     <Item>
       <Image source={{ uri: restaurant.photos[0] }} />
