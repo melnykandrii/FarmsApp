@@ -1,5 +1,3 @@
-//import * as firebase from "firebase";
-import firebase from "firebase/app";
 import React, { useState, createContext } from "react";
 
 import {
@@ -21,7 +19,6 @@ export const AuthenticationContextProvider = ({ children }) => {
       setUser(usr);
       setIsLoading(false);
     } else {
-      setIsLoading(false);
     }
   });
 
@@ -35,15 +32,18 @@ export const AuthenticationContextProvider = ({ children }) => {
       .catch((e) => {
         setIsLoading(false);
         setError(e.toString());
+        console.log(e);
       });
   };
 
   const onSignUp = (email, password, repeatedPassword) => {
+    setIsLoading(true);
     if (password !== repeatedPassword) {
       setError("Error: Passwords do not match");
+      setIsLoading(false);
       return;
     }
-    setIsLoading(true);
+
     signUpRequest(email, password)
       .then((u) => {
         setUser(u);
@@ -52,12 +52,15 @@ export const AuthenticationContextProvider = ({ children }) => {
       .catch((e) => {
         setIsLoading(false);
         setError(e.toString());
+        console.log(e);
       });
   };
 
   const onLogOut = () => {
-    setUser(null);
-    logOut();
+    logOut().then(() => {
+      setUser(null);
+      setError(null);
+    });
   };
 
   return (

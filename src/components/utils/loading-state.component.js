@@ -8,7 +8,7 @@ const LoadingView = styled.View`
   left: 50%;
 `;
 const Activity = styled.ActivityIndicator.attrs({
-  color: theme.colors.ui.error,
+  color: theme.colors.brand.spring,
 })`
   margin-left: -35px;
 `;
@@ -18,7 +18,7 @@ const Activity = styled.ActivityIndicator.attrs({
     },
   })``;*/
 const LoadingText = styled.Text`
-  color: ${(props) => props.theme.colors.ui.error};
+  color: ${(props) => props.theme.colors.brand.spring};
   margin-left: -25px;
 `;
 export const LoadingState = () => {

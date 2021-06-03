@@ -80,8 +80,8 @@ export const RestaurantsScreen = ({ navigation }) => {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={onRefresh}
-            tintColor={theme.colors.ui.error}
-            colors={[theme.colors.ui.error]}
+            tintColor={theme.colors.brand.spring}
+            colors={[theme.colors.brand.spring]}
           />
         }
       />

@@ -18,6 +18,7 @@ import {
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { KeyboardAvoidingView, Platform } from "react-native";
+import { Alert } from "react-native";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
