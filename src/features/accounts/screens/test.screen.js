@@ -1,4 +1,5 @@
 import React from "react";
+import { View, Text } from "react-native";
 import {
   AccountBackground,
   AccountCover,
@@ -10,13 +11,12 @@ import {
   Title,
   TitleContainer,
   MainContainer,
-  BottomContainer,
   BoxContainer,
+  BottomContainer,
 } from "../components/account.styles";
-import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
-export const AccountScreen = ({ navigation }) => (
+export const TestScreen = ({ navigation }) => (
   <AccountBackground>
     <AccountCover />
     <MainContainer>
@@ -25,10 +25,6 @@ export const AccountScreen = ({ navigation }) => (
       </TitleContainer>
       <BoxContainer>
         <AccountContainer>
-          <HeaderContainer>
-            <HeaderLabel>Please Sign In.</HeaderLabel>
-            <HeaderText>Tap on SignUp to create an account.</HeaderText>
-          </HeaderContainer>
           <Spacer size="large">
             <AuthButton
               icon="account-check"
@@ -47,10 +43,13 @@ export const AccountScreen = ({ navigation }) => (
               SignUp
             </AuthButton>
           </Spacer>
+          <Spacer size="large">
+            <HeaderText>Tap on SignUp to create an account.</HeaderText>
+          </Spacer>
         </AccountContainer>
       </BoxContainer>
       <BottomContainer>
-        <Text variant="caption"> @andriiM2021 </Text>
+        <Text> @nd2021 </Text>
       </BottomContainer>
     </MainContainer>
   </AccountBackground>
