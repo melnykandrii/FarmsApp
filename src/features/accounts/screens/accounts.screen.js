@@ -27,7 +27,6 @@ export const AccountScreen = ({ navigation }) => (
         <AccountContainer>
           <HeaderContainer>
             <HeaderLabel>Please Sign In.</HeaderLabel>
-            <HeaderText>Tap on SignUp to create an account.</HeaderText>
           </HeaderContainer>
           <Spacer size="large">
             <AuthButton
@@ -46,6 +45,9 @@ export const AccountScreen = ({ navigation }) => (
             >
               SignUp
             </AuthButton>
+          </Spacer>
+          <Spacer size="large">
+            <Text variant="hint"> Tap on SignUp to create an account. </Text>
           </Spacer>
         </AccountContainer>
       </BoxContainer>

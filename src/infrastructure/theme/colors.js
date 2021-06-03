@@ -4,6 +4,7 @@ export const colors = {
     secondary: "#5282BD",
     muted: "#C6DAF7",
     transparent: "transparent",
+    spring: "#2E8B57",
   },
   ui: {
     primary: "#262626",

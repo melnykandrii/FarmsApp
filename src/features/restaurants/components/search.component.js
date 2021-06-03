@@ -16,6 +16,9 @@ export const Search = ({ isFavouritesToggled, onFavouritesToggled }) => {
   return (
     <SearchView>
       <Searchbar
+        theme={{
+          colors: { primary: "green" },
+        }}
         icon={isFavouritesToggled ? "heart" : "heart-outline"}
         onIconPress={onFavouritesToggled}
         placeholder="Search for a location"

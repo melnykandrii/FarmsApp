@@ -6,9 +6,9 @@ import { LocationContext } from "../../../services/location/location.context";
 const SearchView = styled.View`
   position: absolute;
   z-index: 999;
-  top: ${(props) => props.theme.space[4]};
+  top: ${(props) => props.theme.space[5]};
   width: 96%;
-  left: ${(props) => props.theme.space[2]};
+  left: ${(props) => props.theme.space[3]};
 `;
 
 export const Search = () => {
@@ -22,6 +22,9 @@ export const Search = () => {
   return (
     <SearchView>
       <Searchbar
+        theme={{
+          colors: { primary: "green" },
+        }}
         placeholder="Search for a location"
         icon="map"
         value={searchKeyword}

@@ -4,6 +4,7 @@ import { MapScreen } from "../../features/map/screens/map.screen";
 import { SettingsScreen } from "../../features/restaurants/screens/settings.screen";
 import { Ionicons } from "@expo/vector-icons";
 import { RestaurantsNavigator } from "./restaurants.stack.navigator";
+import { theme } from "../theme";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,7 +26,7 @@ export const AppNavigator = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "tomato",
+        activeTintColor: theme.colors.brand.spring,
         inactiveTintColor: "gray",
       }}
     >

@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
+import { KeyboardAvoidingView, Platform } from "react-native";
 import {
   AccountBackground,
   AccountCover,
@@ -21,7 +22,12 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, error } = useContext(AuthenticationContext);
+  const [repeatedPassword, setRepeatedPassword] = useState("");
+  const { onSignUp, isLoading, error } = useContext(AuthenticationContext);
+
+  const refPass = useRef();
+  const refRepeatPass = useRef();
+  const keyboardVerticalOffset = Platform.OS === "ios" ? 80 : 0;
 
   return (
     <AccountBackground>
@@ -31,45 +37,85 @@ export const RegisterScreen = ({ navigation }) => {
           <Title>Meals to Go</Title>
         </TitleContainer>
         <BoxContainer>
-          <AccountContainer>
-            <HeaderContainer>
-              <HeaderLabel>Please Log In.</HeaderLabel>
-              <HeaderText>Using your email and password.</HeaderText>
-            </HeaderContainer>
-            <AuthInput
-              label="E-mail"
-              value={email}
-              textContentType="emailAddress"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              onChangeText={(u) => setEmail(u)}
-            />
-            <Spacer size="large">
+          <KeyboardAvoidingView
+            behavior="position"
+            keyboardVerticalOffset={keyboardVerticalOffset}
+          >
+            <AccountContainer>
               <AuthInput
-                label="Password"
-                value={password}
-                textContentType="password"
-                secureTextEntry
+                theme={{
+                  colors: { primary: "green", underlineColor: "transparent" },
+                }}
+                label="E-mail"
+                value={email}
+                textContentType="emailAddress"
+                keyboardType="email-address"
+                returnKeyType="next"
                 autoCapitalize="none"
-                secure
-                onChangeText={(p) => setPassword(p)}
+                blurOnSubmit={false}
+                onSubmitEditing={() => refPass.current.focus()}
+                onChangeText={(u) => setEmail(u)}
               />
-            </Spacer>
-            {error && (
               <Spacer size="large">
-                <Text variant="error">{error}</Text>
+                <AuthInput
+                  theme={{
+                    colors: { primary: "green", underlineColor: "transparent" },
+                  }}
+                  label="Password"
+                  value={password}
+                  textContentType="password"
+                  returnKeyType="next"
+                  secureTextEntry
+                  autoCompleteType="password"
+                  autoCapitalize="none"
+                  blurOnSubmit={false}
+                  ref={refPass}
+                  onSubmitEditing={() => refRepeatPass.current.focus()}
+                  onChangeText={(p) => setPassword(p)}
+                />
               </Spacer>
-            )}
-            <Spacer size="large">
-              <AuthButton
-                icon="lock-open-outline"
-                mode="contained"
-                onPress={() => onLogin(email, password)}
-              >
-                Login
-              </AuthButton>
-            </Spacer>
-          </AccountContainer>
+              <Spacer size="large">
+                <AuthInput
+                  theme={{
+                    colors: { primary: "green", underlineColor: "transparent" },
+                  }}
+                  label="Repeat Password"
+                  value={repeatedPassword}
+                  textContentType="password"
+                  returnKeyType="done"
+                  secureTextEntry
+                  autoCompleteType="password"
+                  autoCapitalize="none"
+                  ref={refRepeatPass}
+                  onChangeText={(p) => setRepeatedPassword(p)}
+                />
+              </Spacer>
+              {error && (
+                <Spacer size="large">
+                  <Text variant="error">{error}</Text>
+                </Spacer>
+              )}
+              <Spacer size="large">
+                <AuthButton
+                  icon="account-key"
+                  mode="contained"
+                  onPress={() => onSignUp(email, password, repeatedPassword)}
+                  loading={isLoading ? true : false}
+                >
+                  Sign Up
+                </AuthButton>
+              </Spacer>
+              <Spacer size="large">
+                <AuthButton
+                  icon="account-arrow-left"
+                  mode="contained"
+                  onPress={() => navigation.goBack()}
+                >
+                  Accounts
+                </AuthButton>
+              </Spacer>
+            </AccountContainer>
+          </KeyboardAvoidingView>
         </BoxContainer>
         <BottomContainer>
           <Text variant="caption"> @andriiM2021 </Text>

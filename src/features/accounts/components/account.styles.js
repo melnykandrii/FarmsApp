@@ -15,24 +15,29 @@ export const AccountCover = styled.View`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.5);
 `;
 
 export const AccountContainer = styled.View`
   background-color: rgba(255, 255, 255, 0.7);
   padding: ${(props) => props.theme.space[5]};
   margin-top: ${(props) => props.theme.space[2]};
+  align-items: center;
 `;
 
 export const AuthButton = styled(Button).attrs({
-  color: theme.colors.brand.primary,
+  color: theme.colors.brand.spring,
 })`
   padding: ${(props) => props.theme.space[2]};
+  width: 200px;
 `;
 
 export const HeaderContainer = styled.View`
   align-items: center;
-  justify-content: center;
+  align-self: center;
+  max-width: 300px;
+  margin-top: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[2]};
 `;
 
 export const MainContainer = styled.View`
@@ -43,7 +48,7 @@ export const MainContainer = styled.View`
 export const TitleContainer = styled.View`
   flex: 2;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 export const BoxContainer = styled.View`
@@ -61,11 +66,12 @@ export const BottomContainer = styled.View`
 export const Title = styled.Text`
   font-size: ${(props) => props.theme.sizes[3]};
   font-family: ${(props) => props.theme.fonts.title};
-  color: ${(props) => props.theme.colors.brand.secondary};
+  color: ${(props) => props.theme.colors.brand.spring};
+  font-weight: ${(props) => props.theme.fontWeights.regular};
 `;
 
 export const HeaderLabel = styled.Text`
-  color: ${(props) => props.theme.colors.brand.secondary};
+  color: ${(props) => props.theme.colors.brand.spring};
   font-size: ${(props) => props.theme.sizes[2]};
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
@@ -77,5 +83,13 @@ export const HeaderText = styled.Text`
 `;
 
 export const AuthInput = styled(TextInput)`
-  width: 300px;
+  width: 250px;
+`;
+
+export const ErrorContainer = styled.View`
+  max-width: 300px;
+  align-items: center;
+  align-self: center;
+  margin-top: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[2]};
 `;
