@@ -6,15 +6,16 @@ import {
   AuthButton,
   HeaderLabel,
   HeaderContainer,
-  HeaderText,
   Title,
   TitleContainer,
   MainContainer,
   BottomContainer,
   BoxContainer,
+  AnimationContainer,
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import LottieView from "lottie-react-native";
 
 export const AccountScreen = ({ navigation }) => (
   <AccountBackground>
@@ -23,6 +24,15 @@ export const AccountScreen = ({ navigation }) => (
       <TitleContainer>
         <Title>Meals to Go</Title>
       </TitleContainer>
+      <AnimationContainer>
+        <LottieView
+          key="animation"
+          autoPlay
+          loop
+          resizeMode="cover"
+          source={require("../../../../assets/watermelon.json")}
+        />
+      </AnimationContainer>
       <BoxContainer>
         <AccountContainer>
           <HeaderContainer>

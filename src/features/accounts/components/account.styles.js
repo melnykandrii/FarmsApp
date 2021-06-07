@@ -48,13 +48,17 @@ export const MainContainer = styled.View`
 export const TitleContainer = styled.View`
   flex: 2;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+`;
+
+export const AnimationContainer = styled.View`
+  flex: 2;
 `;
 
 export const BoxContainer = styled.View`
   flex: 5;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 export const BottomContainer = styled.View`
@@ -64,7 +68,7 @@ export const BottomContainer = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: ${(props) => props.theme.sizes[3]};
+  font-size: ${(props) => props.theme.sizepx[3]};
   font-family: ${(props) => props.theme.fonts.title};
   color: ${(props) => props.theme.colors.brand.spring};
   font-weight: ${(props) => props.theme.fontWeights.regular};
@@ -72,13 +76,13 @@ export const Title = styled.Text`
 
 export const HeaderLabel = styled.Text`
   color: ${(props) => props.theme.colors.brand.spring};
-  font-size: ${(props) => props.theme.sizes[2]};
+  font-size: ${(props) => props.theme.sizepx[2]};
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
 export const HeaderText = styled.Text`
   color: ${(props) => props.theme.colors.brand.secondary};
-  font-size: ${(props) => props.theme.sizes[1]};
+  font-size: ${(props) => props.theme.sizepx[1]};
   font-weight: ${(props) => props.theme.fontWeights.regular};
 `;
 

@@ -1,8 +1,8 @@
 import React, { useContext, useState, useCallback } from "react";
-import { FlatList, RefreshControl, TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
+import { RefreshControl, TouchableOpacity } from "react-native";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { RestautantList } from "../components/restaurant-list.styles";
 import { SafeArea } from "../../../components/utils/safe-area.component";
 import { LoadingState } from "../../../components/utils/loading-state.component";
 import { theme } from "../../../infrastructure/theme/index";
@@ -11,12 +11,6 @@ import { FavouritesBar } from "../../../components/favourites/favourites-bar.com
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
-
-const RestautantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 10,
-  },
-})``;
 
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));

@@ -1,24 +1,49 @@
 import React, { useContext } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { List, Avatar } from "react-native-paper";
 import { SafeArea } from "../../../components/utils/safe-area.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import styled from "styled-components/native";
+import { theme } from "../../../infrastructure/theme";
+import { Text } from "../../../components/typography/text.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
-export const SettingsScreen = () => {
-  const { onLogOut } = useContext(AuthenticationContext);
+const SettingItem = styled(List.Item)`
+  padding: ${(props) => props.theme.space[4]};
+`;
+
+const AvatarContainer = styled.View`
+  align-items: center;
+`;
+
+const AvatarIcon = styled(Avatar.Icon).attrs({
+  backgroundColor: theme.colors.brand.spring,
+  size: 180,
+  icon: "human",
+})``;
+
+export const SettingsScreen = ({ navigation }) => {
+  const { onLogOut, user } = useContext(AuthenticationContext);
   return (
     <SafeArea>
-      <View style={styles.container}>
-        <Text>Settings Screen!</Text>
-        <Button title="Log Out" onPress={() => onLogOut()} />
-      </View>
+      <List.Section>
+        <AvatarContainer>
+          <AvatarIcon />
+          <Spacer position="top" size="large">
+            <Text variant="label">{user.email}</Text>
+          </Spacer>
+        </AvatarContainer>
+        <SettingItem
+          title="Favourites"
+          description="View your favourites"
+          left={(props) => <List.Icon {...props} color="black" icon="heart" />}
+          onPress={() => navigation.navigate("Favourites")}
+        />
+        <SettingItem
+          title="Log Out"
+          left={(props) => <List.Icon {...props} color="black" icon="heart" />}
+          onPress={onLogOut}
+        />
+      </List.Section>
     </SafeArea>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
