@@ -3,8 +3,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { AccountScreen } from "../../features/accounts/screens/accounts.screen";
 import { LogInScreen } from "../../features/accounts/screens/login.screen";
 import { RegisterScreen } from "../../features/accounts/screens/register.screen";
-import { TestScreen } from "../../features/accounts/screens/test.screen";
-
 const AuthStack = createStackNavigator();
 
 export const AccountNavigator = () => {
@@ -13,7 +11,6 @@ export const AccountNavigator = () => {
       <AuthStack.Screen name="Main" component={AccountScreen} />
       <AuthStack.Screen name="LogIn" component={LogInScreen} />
       <AuthStack.Screen name="Register" component={RegisterScreen} />
-      <AuthStack.Screen name="Test" component={TestScreen} />
     </AuthStack.Navigator>
   );
 };

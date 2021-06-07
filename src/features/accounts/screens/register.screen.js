@@ -5,16 +5,12 @@ import {
   AccountCover,
   AccountContainer,
   AuthButton,
-  HeaderLabel,
-  HeaderText,
-  HeaderContainer,
   AuthInput,
   MainContainer,
   BoxContainer,
   TitleContainer,
   BottomContainer,
   Title,
-  AnimationContainer,
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";

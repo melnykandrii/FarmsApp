@@ -11,6 +11,7 @@ import { FavouritesBar } from "../../../components/favourites/favourites-bar.com
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
@@ -65,7 +66,9 @@ export const RestaurantsScreen = ({ navigation }) => {
                 })
               }
             >
-              <RestaurantInfoCard restaurant={item} />
+              <FadeInView>
+                <RestaurantInfoCard restaurant={item} />
+              </FadeInView>
             </TouchableOpacity>
           );
         }}
