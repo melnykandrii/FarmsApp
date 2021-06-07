@@ -6,14 +6,8 @@ import { RestautantList } from "../../restaurants/components/restaurant-list.sty
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { Text } from "../../../components/typography/text.component";
 import { theme } from "../../../infrastructure/theme";
+import { EmptyScrollView } from "../../../components/empty-screens/empty-screen.styles";
 
-const EmptyView = styled.ScrollView.attrs({
-  contentContainerStyle: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-})``;
 const FavouritesEmpty = styled.View`
   align-items: center;
   justify-content: center;
@@ -61,7 +55,7 @@ export const FavouritesScreen = ({ navigation }) => {
       }
     />
   ) : (
-    <EmptyView
+    <EmptyScrollView
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
@@ -69,6 +63,6 @@ export const FavouritesScreen = ({ navigation }) => {
       <FavouritesEmpty>
         <Text centr>No favourites yet</Text>
       </FavouritesEmpty>
-    </EmptyView>
+    </EmptyScrollView>
   );
 };

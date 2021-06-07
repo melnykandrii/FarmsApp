@@ -5,6 +5,7 @@ import {
 } from "@react-navigation/stack";
 import { SettingsScreen } from "../../features/settings/screens/settings.screen";
 import { FavouritesScreen } from "../../features/settings/screens/favourites.screen";
+import { CameraScreen } from "../../features/settings/screens/camera.screen";
 
 const SetStack = createStackNavigator();
 
@@ -29,6 +30,7 @@ export const SettingsNavigator = ({ route, navigation }) => {
           headerBackTitleVisible: false,
         }}
       />
+      <SetStack.Screen name="Camera" component={CameraScreen} />
     </SetStack.Navigator>
   );
 };
