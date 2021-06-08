@@ -1,27 +1,37 @@
-import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { View, TouchableOpacity } from "react-native";
 import { Camera } from "expo-camera";
-import styled from "styled-components/native";
 import { Text } from "../../../components/typography/text.component";
 import { EmptyView } from "../../../components/empty-screens/empty-screen.styles";
 import { Icon } from "react-native-elements";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import {
+  CameraButton,
+  CameraProfile,
+  CameraTypeIcon,
+  ButtonContainer,
+  FlashIcon,
+  SnapIcon,
+} from "../components/camera.styles";
 
-const CameraProfile = styled(Camera)`
-  flex: 1;
-`;
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const CameraScreen = () => {
+export const CameraScreen = ({ navigation }) => {
   const cameraRef = useRef();
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.front);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
-  /*
-  snap = async () => {
-    if (this.camera) {
-      let photo = await this.camera.takePictureAsync();
+  const [autoFocus, setAutoFocus] = useState(Camera.Constants.AutoFocus.off);
+  const { user } = useContext(AuthenticationContext);
+
+  const snap = async () => {
+    if (cameraRef) {
+      const photo = await cameraRef.current.takePictureAsync();
+      await AsyncStorage.setItem(`${user.uid}-photo`, photo.uri);
+      navigation.goBack();
     }
-*/
+  };
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
@@ -43,57 +53,54 @@ export const CameraScreen = () => {
     );
   }
   return (
-    <CameraProfile ref={(camera) => (cameraRef.current = camera)} type={type}>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            setType(
-              type === Camera.Constants.Type.front
-                ? Camera.Constants.Type.back
-                : Camera.Constants.Type.front
-            );
-          }}
+    <View>
+      <TouchableOpacity
+        onPress={() => {
+          setAutoFocus(
+            autoFocus === Camera.Constants.AutoFocus.off
+              ? Camera.Constants.AutoFocus.on
+              : Camera.Constants.AutoFocus.off
+          );
+        }}
+      >
+        <CameraProfile
+          ref={(camera) => (cameraRef.current = camera)}
+          type={type}
+          flashMode={flashMode}
         >
-          <Text style={styles.text}> Flip </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            setFlashMode(
-              flashMode === Camera.Constants.FlashMode.off
-                ? Camera.Constants.FlashMode.torch
-                : Camera.Constants.Type.off
-            );
-          }}
-        >
-          <Text style={styles.text}> Flash </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => null}>
-          <Text style={styles.text}> Photo </Text>
-        </TouchableOpacity>
-      </View>
-    </CameraProfile>
+          <ButtonContainer>
+            <CameraButton
+              onPress={() => {
+                setType(
+                  type === Camera.Constants.Type.front
+                    ? Camera.Constants.Type.back
+                    : Camera.Constants.Type.front
+                );
+              }}
+            >
+              <CameraTypeIcon />
+            </CameraButton>
+            <CameraButton onPress={snap}>
+              <SnapIcon />
+            </CameraButton>
+            <CameraButton
+              onPress={() => {
+                setFlashMode(
+                  flashMode === Camera.Constants.FlashMode.off
+                    ? Camera.Constants.FlashMode.on
+                    : Camera.Constants.FlashMode.off
+                );
+              }}
+            >
+              {flashMode === Camera.Constants.FlashMode.off ? (
+                <FlashIcon color="white" />
+              ) : (
+                <FlashIcon color="gold" />
+              )}
+            </CameraButton>
+          </ButtonContainer>
+        </CameraProfile>
+      </TouchableOpacity>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  buttonContainer: {
-    flex: 1,
-    backgroundColor: "transparent",
-    flexDirection: "row",
-    margin: 20,
-  },
-  button: {
-    flex: 0.2,
-    alignSelf: "flex-end",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 18,
-    color: "white",
-  },
-});
