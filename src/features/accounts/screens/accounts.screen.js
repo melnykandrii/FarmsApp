@@ -12,6 +12,7 @@ import {
   BottomContainer,
   BoxContainer,
   AnimationContainer,
+  LogoImage,
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -22,7 +23,7 @@ export const AccountScreen = ({ navigation }) => (
     <AccountCover />
     <MainContainer>
       <TitleContainer>
-        <Title>Meals to Go</Title>
+        <LogoImage />
       </TitleContainer>
       <AnimationContainer>
         <LottieView

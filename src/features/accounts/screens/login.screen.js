@@ -9,8 +9,8 @@ import {
   BoxContainer,
   TitleContainer,
   BottomContainer,
-  Title,
   ErrorContainer,
+  LogoImage,
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -31,7 +31,7 @@ export const LogInScreen = ({ navigation }) => {
       <AccountCover />
       <MainContainer>
         <TitleContainer>
-          <Title>Meals to Go</Title>
+          <LogoImage />
         </TitleContainer>
         <BoxContainer>
           <KeyboardAvoidingView

@@ -28,9 +28,18 @@ export const SettingsNavigator = ({ route, navigation }) => {
         options={{
           headerTitleAlign: "center",
           headerBackTitleVisible: false,
+          headerTintColor: "green",
         }}
       />
-      <SetStack.Screen name="Camera" component={CameraScreen} />
+      <SetStack.Screen
+        name="Camera"
+        component={CameraScreen}
+        options={{
+          headerTitleAlign: "center",
+          headerBackTitleVisible: false,
+          headerTintColor: "green",
+        }}
+      />
     </SetStack.Navigator>
   );
 };

@@ -3,6 +3,15 @@ import { theme } from "../../../infrastructure/theme";
 
 import { Button, TextInput } from "react-native-paper";
 
+export const LogoImage = styled.Image.attrs({
+  source: require("../../../../assets/logo.png"),
+  resizeMode: "cover",
+})`
+  border-radius: 45px;
+  width: ${(props) => props.theme.sizepx[5]};
+  height: ${(props) => props.theme.sizepx[5]};
+`;
+
 export const AccountBackground = styled.ImageBackground.attrs({
   source: require("../../../../assets/home_bg.jpg"),
 })`
@@ -48,7 +57,7 @@ export const MainContainer = styled.View`
 export const TitleContainer = styled.View`
   flex: 2;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 `;
 
 export const AnimationContainer = styled.View`

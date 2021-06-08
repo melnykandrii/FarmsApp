@@ -30,7 +30,7 @@ export const RestaurantCompactInfo = ({ restaurant, isMap }) => {
   return (
     <Item>
       <Image source={{ uri: restaurant.photos[0] }} />
-      <Text center variant="caption" numberOfLines={3}>
+      <Text variant="caption" numberOfLines={3}>
         {restaurant.name}
       </Text>
     </Item>

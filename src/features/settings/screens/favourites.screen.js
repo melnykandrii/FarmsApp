@@ -1,12 +1,14 @@
 import React, { useContext, useCallback, useState } from "react";
 import styled from "styled-components/native";
 import { RefreshControl, TouchableOpacity } from "react-native";
+import { Icon } from "react-native-elements";
 import { RestaurantInfoCard } from "../../restaurants/components/restaurant-info-card.component";
 import { RestautantList } from "../../restaurants/components/restaurant-list.styles";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { Text } from "../../../components/typography/text.component";
 import { theme } from "../../../infrastructure/theme";
 import { EmptyScrollView } from "../../../components/empty-screens/empty-screen.styles";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 const FavouritesEmpty = styled.View`
   align-items: center;
@@ -61,7 +63,10 @@ export const FavouritesScreen = ({ navigation }) => {
       }
     >
       <FavouritesEmpty>
-        <Text centr>No favourites yet</Text>
+        <Icon name="exclamation-triangle" type="font-awesome-5" color="green" />
+        <Spacer size="large">
+          <Text centr>No favourites yet</Text>
+        </Spacer>
       </FavouritesEmpty>
     </EmptyScrollView>
   );
