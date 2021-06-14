@@ -31,14 +31,14 @@ module.exports.placesRequest = (request, response, client) => {
     .placesNearby({
       params: {
         location: location,
-        radius: 1500,
-        keyword: "farm",
+        radius: 80000,
+        keyword: "self+picking+strawberry+farm",
         key: functions.config().google.key,
       },
       timeout: 1000,
     })
     .then((res) => {
-      res.data.results = res.data.results.map(addMockImage);
+      res.data.results = res.data.results.map(addGoogleImage);
       return response.json(res.data);
     })
     .catch((e) => {
