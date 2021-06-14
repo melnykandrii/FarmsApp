@@ -18,12 +18,12 @@ import { AuthenticationContextProvider } from "./src/services/authentication/aut
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyBmwaLAHC9FwM6-HZCyJDJPlA6qit0L3DI",
-  authDomain: "mealsnearme.firebaseapp.com",
-  projectId: "mealsnearme",
-  storageBucket: "mealsnearme.appspot.com",
-  messagingSenderId: "770964313780",
-  appId: "1:770964313780:web:22231c82355613c5d869e1",
+  apiKey: "AIzaSyD3pDCLsvfhpR_UWo40kWhidIVUlVclbNU",
+  authDomain: "farmstogo-13a98.firebaseapp.com",
+  projectId: "farmstogo-13a98",
+  storageBucket: "farmstogo-13a98.appspot.com",
+  messagingSenderId: "668966688436",
+  appId: "1:668966688436:web:54cc3ba313361d8b39a9e1",
 };
 
 if (!firebase.apps.length) {

@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "prod": "mealsnearme",
+    "default": "farmsnearbyserv"
+  }
+}

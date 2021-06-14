@@ -6,7 +6,6 @@ import {
   AuthButton,
   HeaderLabel,
   HeaderContainer,
-  Title,
   TitleContainer,
   MainContainer,
   BottomContainer,
