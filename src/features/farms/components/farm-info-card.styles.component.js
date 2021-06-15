@@ -3,12 +3,12 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 
-export const RestaurantCard = styled(Card)`
+export const FarmCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
   margin-bottom: ${(props) => props.theme.space[2]};
 `;
 
-export const RestaurantCardCover = styled(Card.Cover)`
+export const FarmCardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[2]};
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;

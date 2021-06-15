@@ -4,7 +4,7 @@ import { theme } from "../../../infrastructure/theme";
 import { Button, TextInput } from "react-native-paper";
 
 export const LogoImage = styled.Image.attrs({
-  source: require("../../../../assets/logo.png"),
+  source: require("../../../../assets/adaptive_icon.png"),
   resizeMode: "cover",
 })`
   border-radius: 45px;

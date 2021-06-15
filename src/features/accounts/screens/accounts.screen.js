@@ -62,7 +62,7 @@ export const AccountScreen = ({ navigation }) => (
         </AccountContainer>
       </BoxContainer>
       <BottomContainer>
-        <Text variant="caption"> @andriiM2021 </Text>
+        <Text variant="caption"> @AM2021 </Text>
       </BottomContainer>
     </MainContainer>
   </AccountBackground>

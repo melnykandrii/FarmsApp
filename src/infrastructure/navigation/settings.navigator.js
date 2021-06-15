@@ -6,6 +6,7 @@ import {
 import { SettingsScreen } from "../../features/settings/screens/settings.screen";
 import { FavouritesScreen } from "../../features/settings/screens/favourites.screen";
 import { CameraScreen } from "../../features/settings/screens/camera.screen";
+import { theme } from "../theme";
 
 const SetStack = createStackNavigator();
 
@@ -28,7 +29,7 @@ export const SettingsNavigator = ({ route, navigation }) => {
         options={{
           headerTitleAlign: "center",
           headerBackTitleVisible: false,
-          headerTintColor: "green",
+          headerTintColor: theme.colors.brand.spring,
         }}
       />
       <SetStack.Screen
@@ -37,7 +38,7 @@ export const SettingsNavigator = ({ route, navigation }) => {
         options={{
           headerTitleAlign: "center",
           headerBackTitleVisible: false,
-          headerTintColor: "green",
+          headerTintColor: theme.colors.brand.spring,
         }}
       />
     </SetStack.Navigator>

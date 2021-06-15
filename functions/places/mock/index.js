@@ -21,11 +21,12 @@ const mockImages = [
   "https://post.healthline.com/wp-content/uploads/2020/06/female-holding-strawberry-thumb.20190724214812593-732x549.jpg",
   "https://i.cbc.ca/1.6052514.1622755391!/fileImage/httpImage/image.jpeg_gen/derivatives/16x9_780/strawberry-season-2021.jpeg",
   "https://www.birchwoodcredit.com/wp-content/uploads/2021/04/Batch1_StrawberryPicking_Header-1200x720.png",
+  "https://21vk87r2mob30nkmwrtfd167-wpengine.netdna-ssl.com/wp-content/uploads/2018/06/heemans-flat-strawberries-in-field-1.jpg",
 ];
 
-module.exports.addMockImage = (restaurant) => {
+module.exports.addMockImage = (farm) => {
   const randomImage =
     mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
-  restaurant.photos = [randomImage];
-  return restaurant;
+  farm.photos = [randomImage];
+  return farm;
 };

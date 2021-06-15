@@ -1,12 +1,10 @@
 import React from "react";
-import { RestaurantCompactInfo } from "../../restaurants/components/restaurant-compact-info.component";
+import { FarmCompactInfo } from "../../farms/components/farm-compact-info.component";
 
-//const Label = styled.Text``;
-//<Label>{restaurant.name}</Label>
-export const MapCallout = ({ restaurant }) => {
+export const MapCallout = ({ farm }) => {
   return (
     <>
-      <RestaurantCompactInfo isMap restaurant={restaurant} />
+      <FarmCompactInfo isMap farm={farm} />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-export const RestautantList = styled.FlatList.attrs({
+export const FarmList = styled.FlatList.attrs({
   contentContainerStyle: {
     padding: 10,
   },

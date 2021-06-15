@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
+import { theme } from "../../../infrastructure/theme";
 import { LocationContext } from "../../../services/location/location.context";
 
 const SearchView = styled.View`
@@ -17,7 +18,7 @@ export const Search = ({ isFavouritesToggled, onFavouritesToggled }) => {
     <SearchView>
       <Searchbar
         theme={{
-          colors: { primary: "green" },
+          colors: { primary: theme.colors.brand.spring },
         }}
         icon={isFavouritesToggled ? "heart" : "heart-outline"}
         onIconPress={onFavouritesToggled}

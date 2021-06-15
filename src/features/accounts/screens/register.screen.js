@@ -15,6 +15,7 @@ import {
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { theme } from "../../../infrastructure/theme";
 
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -41,7 +42,10 @@ export const RegisterScreen = ({ navigation }) => {
             <AccountContainer>
               <AuthInput
                 theme={{
-                  colors: { primary: "green", underlineColor: "transparent" },
+                  colors: {
+                    primary: theme.colors.brand.spring,
+                    underlineColor: theme.colors.brand.transparent,
+                  },
                 }}
                 label="E-mail"
                 value={email}
@@ -56,7 +60,10 @@ export const RegisterScreen = ({ navigation }) => {
               <Spacer size="large">
                 <AuthInput
                   theme={{
-                    colors: { primary: "green", underlineColor: "transparent" },
+                    colors: {
+                      primary: theme.colors.brand.spring,
+                      underlineColor: theme.colors.brand.transparent,
+                    },
                   }}
                   label="Password"
                   value={password}
@@ -74,7 +81,10 @@ export const RegisterScreen = ({ navigation }) => {
               <Spacer size="large">
                 <AuthInput
                   theme={{
-                    colors: { primary: "green", underlineColor: "transparent" },
+                    colors: {
+                      primary: theme.colors.brand.spring,
+                      underlineColor: theme.colors.brand.transparent,
+                    },
                   }}
                   label="Repeat Password"
                   value={repeatedPassword}
@@ -115,7 +125,7 @@ export const RegisterScreen = ({ navigation }) => {
           </KeyboardAvoidingView>
         </BoxContainer>
         <BottomContainer>
-          <Text variant="caption"> @andriiM2021 </Text>
+          <Text variant="caption"> @AM2021 </Text>
         </BottomContainer>
       </MainContainer>
     </AccountBackground>

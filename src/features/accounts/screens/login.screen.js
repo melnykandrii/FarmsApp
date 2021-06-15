@@ -15,6 +15,7 @@ import {
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { KeyboardAvoidingView, Platform } from "react-native";
+import { theme } from "../../../infrastructure/theme";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
@@ -41,7 +42,10 @@ export const LogInScreen = ({ navigation }) => {
             <AccountContainer>
               <AuthInput
                 theme={{
-                  colors: { primary: "green", underlineColor: "transparent" },
+                  colors: {
+                    primary: theme.colors.brand.spring,
+                    underlineColor: theme.colors.brand.transparent,
+                  },
                 }}
                 label="E-mail"
                 value={email}
@@ -56,7 +60,10 @@ export const LogInScreen = ({ navigation }) => {
               <Spacer size="large">
                 <AuthInput
                   theme={{
-                    colors: { primary: "green", underlineColor: "transparent" },
+                    colors: {
+                      primary: theme.colors.brand.spring,
+                      underlineColor: theme.colors.brand.transparent,
+                    },
                   }}
                   label="Password"
                   value={password}
@@ -98,7 +105,7 @@ export const LogInScreen = ({ navigation }) => {
           </KeyboardAvoidingView>
         </BoxContainer>
         <BottomContainer>
-          <Text variant="caption"> @andriiM2021 </Text>
+          <Text variant="caption"> @AM2021 </Text>
         </BottomContainer>
       </MainContainer>
     </AccountBackground>

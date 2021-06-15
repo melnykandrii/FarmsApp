@@ -29,14 +29,12 @@ export const FavouritesContextProvider = ({ children }) => {
     }
   };
   // add function;
-  const add = (restaurant) => {
-    SetFavourites([...favourites, restaurant]);
+  const add = (farm) => {
+    SetFavourites([...favourites, farm]);
   };
   //remove function
-  const remove = (restaurant) => {
-    const newFavourites = favourites.filter(
-      (x) => x.placeId !== restaurant.placeId
-    );
+  const remove = (farm) => {
+    const newFavourites = favourites.filter((x) => x.placeId !== farm.placeId);
     SetFavourites(newFavourites);
   };
 

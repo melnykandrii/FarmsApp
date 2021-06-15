@@ -2,20 +2,20 @@ const { mocks, addMockImage } = require("./mock");
 const url = require("url");
 const functions = require("firebase-functions");
 
-const addGoogleImage = (restaurant) => {
-  const ref = restaurant.photos[0].photo_reference;
+const addGoogleImage = (farm) => {
+  const ref = farm.photos[0].photo_reference;
   if (!ref) {
-    restaurant.photos = [
-      "https://www.foodiesfeed.com/wp-content/uploads/2019/02/messy-pizza-on-a-black-table-600x400.jpg",
+    farm.photos = [
+      "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/strawberries-1296x728-feature.jpg",
     ];
-    return restaurant;
+    return farm;
   }
-  restaurant.photos = [
+  farm.photos = [
     `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${
       functions.config().google.key
     }`,
   ];
-  return restaurant;
+  return farm;
 };
 
 module.exports.placesRequest = (request, response, client) => {
@@ -31,7 +31,7 @@ module.exports.placesRequest = (request, response, client) => {
     .placesNearby({
       params: {
         location: location,
-        radius: 80000,
+        radius: 70000,
         keyword: "self+picking+strawberry+farm",
         key: functions.config().google.key,
       },

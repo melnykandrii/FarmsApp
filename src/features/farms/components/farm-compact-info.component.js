@@ -25,13 +25,13 @@ const Item = styled.View`
 
 const isAndroid = Platform.OS === "android";
 
-export const RestaurantCompactInfo = ({ restaurant, isMap }) => {
+export const FarmCompactInfo = ({ farm, isMap }) => {
   const Image = isAndroid && isMap ? CompactWebView : CompactImage;
   return (
     <Item>
-      <Image source={{ uri: restaurant.photos[0] }} />
+      <Image source={{ uri: farm.photos[0] }} />
       <Text variant="caption" numberOfLines={3}>
-        {restaurant.name}
+        {farm.name}
       </Text>
     </Item>
   );

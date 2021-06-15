@@ -1,6 +1,7 @@
 import { Camera } from "expo-camera";
 import styled from "styled-components/native";
 import { Icon } from "react-native-elements";
+import { theme } from "../../../infrastructure/theme";
 
 export const CameraProfile = styled(Camera)`
   width: 100%;
@@ -29,7 +30,7 @@ export const FlashIcon = styled(Icon).attrs({
 export const SnapIcon = styled(Icon).attrs({
   name: "circle",
   type: "font-awesome-5",
-  color: "white",
+  color: theme.colors.bg.primary,
   size: 60,
   solid: false,
 })``;
@@ -37,5 +38,5 @@ export const SnapIcon = styled(Icon).attrs({
 export const CameraTypeIcon = styled(Icon).attrs({
   name: "sync",
   type: "font-awesome-5",
-  color: "white",
+  color: theme.colors.bg.primary,
 })``;

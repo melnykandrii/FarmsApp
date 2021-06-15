@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
-import { RestaurantCompactInfo } from "../../features/restaurants/components/restaurant-compact-info.component";
+import { FarmCompactInfo } from "../../features/farms/components/farm-compact-info.component";
 import { Spacer } from "../spacer/spacer.component";
 import { Text } from "../typography/text.component";
 
@@ -20,14 +20,14 @@ export const FavouritesBar = ({ favourites, onNavigate }) => {
       </Spacer>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {favourites.map((restaurant) => {
-          const key = restaurant.name;
+        {favourites.map((farm) => {
+          const key = farm.name;
           return (
             <Spacer key={key} position="left" size="medium">
               <TouchableOpacity
-                onPress={() => onNavigate("Restaurant Details", { restaurant })}
+                onPress={() => onNavigate("Farm Details", { farm })}
               >
-                <RestaurantCompactInfo restaurant={restaurant} />
+                <FarmCompactInfo farm={farm} />
               </TouchableOpacity>
             </Spacer>
           );

@@ -2,8 +2,8 @@ import React, { useContext, useCallback, useState } from "react";
 import styled from "styled-components/native";
 import { RefreshControl, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
-import { RestaurantInfoCard } from "../../restaurants/components/restaurant-info-card.component";
-import { RestautantList } from "../../restaurants/components/restaurant-list.styles";
+import { FarmInfoCard } from "../../farms/components/farm-info-card.component";
+import { FarmList } from "../../farms/components/farm-list.styles";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { Text } from "../../../components/typography/text.component";
 import { theme } from "../../../infrastructure/theme";
@@ -29,20 +29,20 @@ export const FavouritesScreen = ({ navigation }) => {
   }, []);
 
   return favourites.length ? (
-    <RestautantList
+    <FarmList
       data={favourites}
       renderItem={({ item }) => {
         return (
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("Restaurant Details", {
-                restaurant: item,
-                restname: item.name,
-                restaddress: item.address,
+              navigation.navigate("Farm Details", {
+                farm: item,
+                farmname: item.name,
+                farmaddress: item.address,
               })
             }
           >
-            <RestaurantInfoCard restaurant={item} />
+            <FarmInfoCard farm={item} />
           </TouchableOpacity>
         );
       }}
@@ -63,7 +63,11 @@ export const FavouritesScreen = ({ navigation }) => {
       }
     >
       <FavouritesEmpty>
-        <Icon name="exclamation-triangle" type="font-awesome-5" color="green" />
+        <Icon
+          name="exclamation-triangle"
+          type="font-awesome-5"
+          color={theme.colors.brand.spring}
+        />
         <Spacer size="large">
           <Text centr>No favourites yet</Text>
         </Spacer>

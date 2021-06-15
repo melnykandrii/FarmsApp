@@ -12,11 +12,6 @@ const Activity = styled.ActivityIndicator.attrs({
 })`
   margin-left: -35px;
 `;
-/*const RestautantList = styled(FlatList).attrs({
-    contentContainerStyle: {
-      padding: 16,
-    },
-  })``;*/
 const LoadingText = styled.Text`
   color: ${(props) => props.theme.colors.brand.spring};
   margin-left: -25px;

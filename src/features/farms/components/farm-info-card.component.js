@@ -2,8 +2,8 @@ import React from "react";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import {
-  RestaurantCard,
-  RestaurantCardCover,
+  FarmCard,
+  FarmCardCover,
   Title,
   Address,
   Info,
@@ -13,12 +13,12 @@ import {
   CloseLabel,
   SvgIcon,
   AmenityImage,
-} from "../components/restaurant-info-card.styles.component";
+} from "./farm-info-card.styles.component";
 import { Favourite } from "../../../components/favourites/favourite.component";
 
-export const RestaurantInfoCard = ({ restaurant = {} }) => {
+export const FarmInfoCard = ({ farm = {} }) => {
   const {
-    name = "Some Restaurant",
+    name = "Some Farm",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/content9442.jpg",
@@ -28,14 +28,14 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     rating = 3.6,
     isClosedTemporarily = true,
     placeId,
-  } = restaurant;
+  } = farm;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <RestaurantCard elevation={5}>
-      <Favourite restaurant={restaurant} />
-      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+    <FarmCard elevation={5}>
+      <Favourite farm={farm} />
+      <FarmCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Title>{name}</Title>
         <SectionIcons>
@@ -52,6 +52,6 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         </SectionIcons>
         <Address>{address}</Address>
       </Info>
-    </RestaurantCard>
+    </FarmCard>
   );
 };

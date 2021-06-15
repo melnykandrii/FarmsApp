@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "MealsNearYou",
-    "slug": "MealsNearYou",
+    "name": "FarmsNearBy",
+    "slug": "FarmsNearBy",
     "version": "0.0.1",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/adaptive_icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
