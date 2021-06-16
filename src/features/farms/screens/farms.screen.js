@@ -15,6 +15,7 @@ import { FarmsContext } from "../../../services/farms/farms.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { FadeInView } from "../../../components/animations/fade.animation";
 import { LocationContext } from "../../../services/location/location.context";
+import { Platform } from "react-native";
 
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
@@ -35,18 +36,18 @@ export const FarmsScreen = ({ navigation }) => {
 
   if (refreshing) {
     return (
-      <SafeArea>
+      <>
         <Search
           isFavouritesToggled={isToggled}
           onFavouritesToggled={() => setIsToggled(!isToggled)}
         />
         <LoadingState />
-      </SafeArea>
+      </>
     );
   }
 
   return (
-    <SafeArea>
+    <>
       {isLoading && <LoadingState />}
       <Search
         isFavouritesToggled={isToggled}
@@ -94,6 +95,6 @@ export const FarmsScreen = ({ navigation }) => {
           }
         />
       )}
-    </SafeArea>
+    </>
   );
 };

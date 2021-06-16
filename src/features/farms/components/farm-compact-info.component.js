@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import { Platform } from "react-native";
 import { WebView } from "react-native-webview";
 import { Text } from "../../../components/typography/text.component";
+import { Favourite } from "../../../components/favourites/favourite.component";
 
 const CompactImage = styled.Image`
   border-radius: ${(props) => props.theme.sizepx[1]};
@@ -29,6 +30,7 @@ export const FarmCompactInfo = ({ farm, isMap }) => {
   const Image = isAndroid && isMap ? CompactWebView : CompactImage;
   return (
     <Item>
+      {isMap ? <Favourite farm={farm} /> : null}
       <Image source={{ uri: farm.photos[0] }} />
       <Text variant="caption" numberOfLines={3}>
         {farm.name}

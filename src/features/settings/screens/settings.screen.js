@@ -62,10 +62,22 @@ export const SettingsScreen = ({ navigation }) => {
             <List.Icon
               {...props}
               color={theme.colors.brand.spring}
-              icon="heart"
+              icon="heart-multiple-outline"
             />
           )}
           onPress={() => navigation.navigate("Favourites")}
+        />
+        <SettingItem
+          title="About"
+          description="More information"
+          left={(props) => (
+            <List.Icon
+              {...props}
+              color={theme.colors.brand.spring}
+              icon="information-outline"
+            />
+          )}
+          onPress={() => navigation.navigate("About")}
         />
         <SettingItem
           title="Log Out"

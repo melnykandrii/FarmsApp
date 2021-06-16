@@ -25,10 +25,8 @@ export const Favourite = ({ farm }) => {
     >
       <AntDesign
         name={isFavourite ? "heart" : "hearto"}
-        size={30}
-        color={
-          isFavourite ? theme.colors.brand.spring : theme.colors.bg.primary
-        }
+        size={26}
+        color={isFavourite ? theme.colors.ui.favorite : theme.colors.bg.primary}
       />
     </FavouriteButton>
   );

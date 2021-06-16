@@ -3,9 +3,17 @@ import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 import { theme } from "../../../infrastructure/theme";
 import { LocationContext } from "../../../services/location/location.context";
-
+/*
 const SearchView = styled.View`
   padding: ${(props) => props.theme.space[1]};
+`;
+*/
+const SearchView = styled.View`
+  position: absolute;
+  z-index: 999;
+  top: ${(props) => props.theme.space[2]};
+  width: 98%;
+  left: ${(props) => props.theme.space[2]};
 `;
 
 export const Search = ({ isFavouritesToggled, onFavouritesToggled }) => {

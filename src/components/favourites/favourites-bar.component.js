@@ -6,7 +6,8 @@ import { Spacer } from "../spacer/spacer.component";
 import { Text } from "../typography/text.component";
 
 const FavouritesWrapper = styled.View`
-  padding: ${(props) => props.theme.sizepx[1]};
+  padding: ${(props) => props.theme.sizepx[0]};
+  padding-top: ${(props) => props.theme.sizepx[4]};
 `;
 
 export const FavouritesBar = ({ favourites, onNavigate }) => {

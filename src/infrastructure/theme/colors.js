@@ -15,6 +15,7 @@ export const colors = {
     error: "#D0421B",
     success: "#138000",
     flash: "gold",
+    favorite: "#DC143C",
   },
   bg: {
     primary: "#FFFFFF",

@@ -6,6 +6,7 @@ import {
 import { SettingsScreen } from "../../features/settings/screens/settings.screen";
 import { FavouritesScreen } from "../../features/settings/screens/favourites.screen";
 import { CameraScreen } from "../../features/settings/screens/camera.screen";
+import { AboutScreen } from "../../features/settings/screens/about.screen";
 import { theme } from "../theme";
 
 const SetStack = createStackNavigator();
@@ -35,6 +36,15 @@ export const SettingsNavigator = ({ route, navigation }) => {
       <SetStack.Screen
         name="Camera"
         component={CameraScreen}
+        options={{
+          headerTitleAlign: "center",
+          headerBackTitleVisible: false,
+          headerTintColor: theme.colors.brand.spring,
+        }}
+      />
+      <SetStack.Screen
+        name="About"
+        component={AboutScreen}
         options={{
           headerTitleAlign: "center",
           headerBackTitleVisible: false,

@@ -25,4 +25,5 @@ export const sizepx = [
   "200px",
   "250px",
   "300px",
+  "44px",
 ];
