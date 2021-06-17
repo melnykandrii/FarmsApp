@@ -3,18 +3,17 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from "@react-navigation/stack";
-import { FarmsScreen } from "../../features/farms/screens/farms.screen";
-import { FarmDetailsScreen } from "../../features/farms/screens/farm-details.screen";
 import { MainLogo } from "../../features/farms/components/farm-logo.component";
 import { theme } from "../../infrastructure/theme";
 import HeaderButton from "../../components/utils/header.button.component";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { FavouritesScreen } from "../../features/settings/screens/favourites.screen";
 
-const FarmStack = createStackNavigator();
+const FavStack = createStackNavigator();
 
-export const FarmsNavigator = () => {
+export const FavNavigator = () => {
   return (
-    <FarmStack.Navigator
+    <FavStack.Navigator
       screenOptions={({ navigation }) => ({
         title: (
           <MainLogo
@@ -32,9 +31,9 @@ export const FarmsNavigator = () => {
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       })}
     >
-      <FarmStack.Screen
-        name="Farms"
-        component={FarmsScreen}
+      <FavStack.Screen
+        name="Favourites"
+        component={FavouritesScreen}
         options={({ navigation }) => ({
           headerLeft: () => (
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
@@ -51,7 +50,6 @@ export const FarmsNavigator = () => {
           ),
         })}
       />
-      <FarmStack.Screen name="Farm Details" component={FarmDetailsScreen} />
-    </FarmStack.Navigator>
+    </FavStack.Navigator>
   );
 };

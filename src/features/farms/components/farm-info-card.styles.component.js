@@ -54,13 +54,14 @@ export const CloseLabel = styled.Text`
 
 export const AmenityIcon = styled(MaterialIcons)`
   font-size: ${(props) => props.theme.sizepx[0]};
-  color: ${(props) => props.theme.colors.ui.primary};
+  color: ${(props) => props.theme.colors.brand.spring};
   margin-left: 50px;
 `;
 
 export const AmenityImage = styled.Image`
   width: ${(props) => props.theme.sizepx[1]};
   height: ${(props) => props.theme.sizepx[1]};
+  tint-color: ${(props) => props.theme.colors.brand.spring};
   margin-left: 5px;
 `;
 

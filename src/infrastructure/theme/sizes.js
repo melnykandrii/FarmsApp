@@ -10,6 +10,7 @@ export const sizes = [
   "200",
   "250",
   "300",
+  "48",
 ];
 export const sizepx = [
   "8px",

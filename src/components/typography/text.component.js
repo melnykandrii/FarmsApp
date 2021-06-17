@@ -9,6 +9,11 @@ const defaultTextStyles = (theme) => `
   margin-bottom: 0px;
 `;
 
+const header = (theme) => `
+    font-size: ${theme.fontSizes.title};
+    font-weight: ${theme.fontWeights.medium};
+`;
+
 const body = (theme) => `
     font-size: ${theme.fontSizes.body};
 `;
@@ -32,12 +37,20 @@ const label = (theme) => `
     font-weight: ${theme.fontWeights.medium};
 `;
 
+const button = (theme) => `
+    font-family: ${theme.fonts.body};
+    color: ${theme.colors.brand.spring};
+    font-size: ${theme.fontSizes.title};
+`;
+
 const variants = {
+  header,
   body,
   label,
   caption,
   error,
   hint,
+  button,
 };
 
 export const Text = styled.Text`

@@ -3,12 +3,12 @@ import styled from "styled-components/native";
 import { RefreshControl, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 import { FarmInfoCard } from "../../farms/components/farm-info-card.component";
-import { FarmList } from "../../farms/components/farm-list.styles";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { Text } from "../../../components/typography/text.component";
 import { theme } from "../../../infrastructure/theme";
 import { EmptyScrollView } from "../../../components/empty-screens/empty-screen.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { FavList } from "../components/fav-list.style.component";
 
 const FavouritesEmpty = styled.View`
   align-items: center;
@@ -29,7 +29,7 @@ export const FavouritesScreen = ({ navigation }) => {
   }, []);
 
   return favourites.length ? (
-    <FarmList
+    <FavList
       data={favourites}
       renderItem={({ item }) => {
         return (

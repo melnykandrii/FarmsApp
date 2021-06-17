@@ -3,15 +3,15 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from "@react-navigation/stack";
-import { SettingsScreen } from "../../features/settings/screens/settings.screen";
 import { FavouritesScreen } from "../../features/settings/screens/favourites.screen";
 import { CameraScreen } from "../../features/settings/screens/camera.screen";
 import { AboutScreen } from "../../features/settings/screens/about.screen";
 import { theme } from "../theme";
+import { MenuScreen } from "../../features/settings/screens/menu.screen";
 
 const SetStack = createStackNavigator();
 
-export const SettingsNavigator = ({ route, navigation }) => {
+export const MenuNavigator = ({ route, navigation }) => {
   return (
     <SetStack.Navigator
       headerMode="screen"
@@ -21,8 +21,8 @@ export const SettingsNavigator = ({ route, navigation }) => {
     >
       <SetStack.Screen
         options={{ header: () => null }}
-        name="Settings"
-        component={SettingsScreen}
+        name="Menu"
+        component={MenuScreen}
       />
       <SetStack.Screen
         name="Favourites"

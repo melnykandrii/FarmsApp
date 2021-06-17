@@ -3,7 +3,6 @@ import { RefreshControl, TouchableOpacity } from "react-native";
 
 import { FarmInfoCard } from "../components/farm-info-card.component";
 import { FarmList } from "../components/farm-list.styles";
-import { SafeArea } from "../../../components/utils/safe-area.component";
 import { LoadingState } from "../../../components/utils/loading-state.component";
 import { theme } from "../../../infrastructure/theme/index";
 import { Search } from "../components/search.component";
@@ -15,7 +14,6 @@ import { FarmsContext } from "../../../services/farms/farms.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { FadeInView } from "../../../components/animations/fade.animation";
 import { LocationContext } from "../../../services/location/location.context";
-import { Platform } from "react-native";
 
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));

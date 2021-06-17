@@ -8,7 +8,7 @@ const AuthStack = createStackNavigator();
 export const AccountNavigator = () => {
   return (
     <AuthStack.Navigator headerMode="none">
-      <AuthStack.Screen name="Main" component={AccountScreen} />
+      <AuthStack.Screen name="Onboard" component={AccountScreen} />
       <AuthStack.Screen name="LogIn" component={LogInScreen} />
       <AuthStack.Screen name="Register" component={RegisterScreen} />
     </AuthStack.Navigator>

@@ -1,7 +1,7 @@
 import React from "react";
-import { Platform } from "react-native";
 import { HeaderButton } from "react-navigation-header-buttons";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { theme } from "../../infrastructure/theme";
 
 const DefaultHeaderButton = (props) => {
   return (
@@ -9,7 +9,7 @@ const DefaultHeaderButton = (props) => {
       {...props}
       IconComponent={Ionicons}
       iconSize={23}
-      color={Platform.OS === "android" ? "green" : "red"}
+      color={theme.colors.brand.spring}
     />
   );
 };
