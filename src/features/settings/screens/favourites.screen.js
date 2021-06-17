@@ -1,19 +1,11 @@
 import React, { useContext, useCallback, useState } from "react";
-import styled from "styled-components/native";
 import { RefreshControl, TouchableOpacity } from "react-native";
-import { Icon } from "react-native-elements";
 import { FarmInfoCard } from "../../farms/components/farm-info-card.component";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
-import { Text } from "../../../components/typography/text.component";
 import { theme } from "../../../infrastructure/theme";
-import { EmptyScrollView } from "../../../components/empty-screens/empty-screen.styles";
-import { Spacer } from "../../../components/spacer/spacer.component";
+import { EmptyScrollView } from "../../../components/empty-screens/empty.screen.styles";
 import { FavList } from "../components/fav-list.style.component";
-
-const FavouritesEmpty = styled.View`
-  align-items: center;
-  justify-content: center;
-`;
+import { EmptyScreen } from "../../../components/empty-screens/empty.screen.component";
 
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
@@ -62,16 +54,7 @@ export const FavouritesScreen = ({ navigation }) => {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
     >
-      <FavouritesEmpty>
-        <Icon
-          name="exclamation-triangle"
-          type="font-awesome-5"
-          color={theme.colors.brand.spring}
-        />
-        <Spacer size="large">
-          <Text centr>No favourites yet</Text>
-        </Spacer>
-      </FavouritesEmpty>
+      <EmptyScreen text="No favourites yet" />
     </EmptyScrollView>
   );
 };

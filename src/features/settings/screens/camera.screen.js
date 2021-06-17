@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { View, TouchableOpacity } from "react-native";
 import { Camera } from "expo-camera";
-import { Text } from "../../../components/typography/text.component";
-import { EmptyView } from "../../../components/empty-screens/empty-screen.styles";
-import { Icon } from "react-native-elements";
-import { Spacer } from "../../../components/spacer/spacer.component";
 import {
   CameraButton,
   CameraProfile,
@@ -17,6 +13,7 @@ import {
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { theme } from "../../../infrastructure/theme";
+import { EmptyScreen } from "../../../components/empty-screens/empty.screen.component";
 
 export const CameraScreen = ({ navigation }) => {
   const cameraRef = useRef();
@@ -41,17 +38,12 @@ export const CameraScreen = ({ navigation }) => {
   }, []);
 
   if (hasPermission === null) {
-    return <View />;
+    return (
+      <EmptyScreen text="Please grant permission to the camera in order to take a picture." />
+    );
   }
   if (hasPermission === false) {
-    return (
-      <EmptyView>
-        <Icon name="exclamation-triangle" type="font-awesome-5" />
-        <Spacer size="large">
-          <Text variant="label">No access to the camera</Text>
-        </Spacer>
-      </EmptyView>
-    );
+    return <EmptyScreen text="No access to the camera" />;
   }
   return (
     <View>

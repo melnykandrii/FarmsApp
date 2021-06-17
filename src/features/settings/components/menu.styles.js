@@ -18,8 +18,8 @@ export const TopButtonsContainer = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: space-between;
-  padding-right: 18px;
-  padding-left: 18px;
+  padding-right: ${(props) => props.theme.sizepx[3]};
+  padding-left: ${(props) => props.theme.sizepx[3]};
 `;
 
 export const MenuContainer = styled.View`

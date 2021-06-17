@@ -7,13 +7,12 @@ import { LoadingState } from "../../../components/utils/loading-state.component"
 import { theme } from "../../../infrastructure/theme/index";
 import { Search } from "../components/search.component";
 import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
-import { Text } from "../../../components/typography/text.component";
-import { Spacer } from "../../../components/spacer/spacer.component";
 
 import { FarmsContext } from "../../../services/farms/farms.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { FadeInView } from "../../../components/animations/fade.animation";
 import { LocationContext } from "../../../services/location/location.context";
+import { ErrorScreen } from "../../../components/error-screen/error.screen.component";
 
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
@@ -58,9 +57,7 @@ export const FarmsScreen = ({ navigation }) => {
         />
       )}
       {hasError && (
-        <Spacer position="left" size="large">
-          <Text variant="error">Something went wrong retriving the data</Text>
-        </Spacer>
+        <ErrorScreen text="Something went wrong retriving the data" />
       )}
       {!hasError && (
         <FarmList
