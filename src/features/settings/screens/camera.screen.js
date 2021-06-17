@@ -14,6 +14,7 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { theme } from "../../../infrastructure/theme";
 import { EmptyScreen } from "../../../components/empty-screens/empty.screen.component";
+import { Refresher } from "../../../components/refresher/refresher.component";
 
 export const CameraScreen = ({ navigation }) => {
   const cameraRef = useRef();
@@ -39,11 +40,11 @@ export const CameraScreen = ({ navigation }) => {
 
   if (hasPermission === null) {
     return (
-      <EmptyScreen text="Please grant permission to the camera in order to take a picture." />
+      <Refresher text="Please grant permission to the camera in order to take a picture." />
     );
   }
   if (hasPermission === false) {
-    return <EmptyScreen text="No access to the camera" />;
+    return <Refresher text="No access to the camera" />;
   }
   return (
     <View>
