@@ -17,7 +17,8 @@ import {
   VersionContainer,
   AvatarPhoto,
 } from "../components/menu.styles";
-import { MenuItem, LogOut } from "../components/menu.components";
+import { MenuItem } from "../components/menu.components";
+import { ScreenButton } from "../../../components/buttons/screen-button.component";
 
 export const MenuScreen = ({ navigation }) => {
   const { onLogOut, user } = useContext(AuthenticationContext);
@@ -37,7 +38,7 @@ export const MenuScreen = ({ navigation }) => {
       <TopContainer>
         <TopButtonsContainer>
           <CloseIcon onClose={() => navigation.goBack()} />
-          <LogOut onLogOut={onLogOut} />
+          <ScreenButton title="Log Out" onNavigate={onLogOut} />
         </TopButtonsContainer>
       </TopContainer>
 

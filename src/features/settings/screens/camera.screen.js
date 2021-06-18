@@ -13,7 +13,6 @@ import {
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { theme } from "../../../infrastructure/theme";
-import { EmptyScreen } from "../../../components/empty-screens/empty.screen.component";
 import { Refresher } from "../../../components/refresher/refresher.component";
 
 export const CameraScreen = ({ navigation }) => {

@@ -19,10 +19,7 @@ export const FarmsNavigator = () => {
         title: (
           <MainLogo
             onHelp={() => {
-              navigation.navigate("Menu", {
-                screen: "About",
-                initial: false,
-              });
+              navigation.navigate("Location");
             }}
           />
         ),
