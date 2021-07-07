@@ -5,30 +5,41 @@ import {
 } from "@react-navigation/stack";
 import { TabNavigator } from "./tab.navigator";
 import { MenuNavigator } from "./menu.navigator";
-import { LocationScreen } from "../../features/settings/screens/location.screen";
+import { LocationNavigator } from "./location.stack";
 
 const MainStack = createStackNavigator();
 
 export const MainNavigator = () => {
   return (
     <MainStack.Navigator
+      initialRouteName="Location"
       headerMode="none"
-      screenOptions={{
-        ...TransitionPresets.SlideFromRightIOS,
-        gestureDirection: "horizontal-inverted",
-      }}
+      screenOptions={{}}
     >
-      <MainStack.Screen name="Main" component={TabNavigator} />
+      <MainStack.Screen
+        name="Main"
+        component={TabNavigator}
+        options={{
+          ...TransitionPresets.SlideFromRightIOS,
+          gestureDirection: "horizontal",
+        }}
+      />
       <MainStack.Screen
         name="Menu"
         component={MenuNavigator}
-        options={
-          {
-            //gestureDirection: "horizontal-inverted",
-          }
-        }
+        options={{
+          ...TransitionPresets.SlideFromRightIOS,
+          gestureDirection: "horizontal-inverted",
+        }}
       />
-      <MainStack.Screen name="Location" component={LocationScreen} />
+      <MainStack.Screen
+        name="Location"
+        component={LocationNavigator}
+        options={{
+          ...TransitionPresets.SlideFromRightIOS,
+          gestureDirection: "horizontal",
+        }}
+      />
     </MainStack.Navigator>
   );
 };

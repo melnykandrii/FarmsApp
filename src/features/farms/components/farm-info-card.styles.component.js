@@ -5,12 +5,14 @@ import { SvgXml } from "react-native-svg";
 
 export const FarmCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
-  margin-bottom: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[3]};
+  border-radius: 10px;
 `;
 
 export const FarmCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[2]};
+  padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.bg.primary};
+  border-radius: 10px;
 `;
 
 export const Title = styled.Text`

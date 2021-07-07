@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MapScreen } from "../../features/map/screens/map.screen";
 import { FarmsNavigator } from "./farms.stack.navigator";
@@ -6,10 +6,12 @@ import { theme } from "../theme";
 import { Icon } from "react-native-elements";
 import { FavNavigator } from "./favourites.navigator";
 import { CheckoutNavigator } from "./checkout.navigator";
+import { CartContext } from "../../services/cart/cart.context";
 
 const Tab = createBottomTabNavigator();
 
 export const TabNavigator = () => {
+  const { cart } = useContext(CartContext);
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -33,12 +35,19 @@ export const TabNavigator = () => {
       tabBarOptions={{
         activeTintColor: theme.colors.brand.spring,
         inactiveTintColor: "gray",
+        keyboardHidesTabBar: true,
       }}
     >
       <Tab.Screen name="Farms" component={FarmsNavigator} />
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Favourite" component={FavNavigator} />
-      <Tab.Screen name="Cart" component={CheckoutNavigator} />
+      <Tab.Screen
+        name="Cart"
+        component={CheckoutNavigator}
+        options={{
+          tabBarBadge: cart.length,
+        }}
+      />
     </Tab.Navigator>
   );
 };

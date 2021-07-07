@@ -7,7 +7,6 @@ import { LoadingState } from "../../../components/utils/loading-state.component"
 import { theme } from "../../../infrastructure/theme/index";
 import { Search } from "../components/search.component";
 import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
-
 import { FarmsContext } from "../../../services/farms/farms.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { FadeInView } from "../../../components/animations/fade.animation";

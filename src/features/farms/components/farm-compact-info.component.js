@@ -30,14 +30,12 @@ const isAndroid = Platform.OS === "android";
 export const FarmCompactInfo = ({ farm, isMap }) => {
   const Image = isAndroid && isMap ? CompactWebView : CompactImage;
   return (
-    <FadeInView>
-      <Item>
-        {isMap ? <Favourite farm={farm} /> : null}
-        <Image source={{ uri: farm.photos[0] }} />
-        <Text variant="caption" numberOfLines={3}>
-          {farm.name}
-        </Text>
-      </Item>
-    </FadeInView>
+    <Item>
+      {isMap ? <Favourite farm={farm} /> : null}
+      <Image source={{ uri: farm.photos[0] }} />
+      <Text variant="caption" numberOfLines={3}>
+        {farm.name}
+      </Text>
+    </Item>
   );
 };

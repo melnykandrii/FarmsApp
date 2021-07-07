@@ -9,7 +9,6 @@ import { useFocusEffect } from "@react-navigation/native";
 import { CloseIcon } from "../../../components/utils/close-screen.button.component";
 import {
   MenuContainer,
-  MenuScreenView,
   TopButtonsContainer,
   TopContainer,
   AvatarContainer,
@@ -19,6 +18,7 @@ import {
 } from "../components/menu.styles";
 import { MenuItem } from "../components/menu.components";
 import { ScreenButton } from "../../../components/buttons/screen-button.component";
+import { MenuBackground, MenuCover } from "../components/menu.styles";
 
 export const MenuScreen = ({ navigation }) => {
   const { onLogOut, user } = useContext(AuthenticationContext);
@@ -34,7 +34,8 @@ export const MenuScreen = ({ navigation }) => {
     }, [user])
   );
   return (
-    <MenuScreenView>
+    <MenuBackground>
+      <MenuCover />
       <TopContainer>
         <TopButtonsContainer>
           <CloseIcon onClose={() => navigation.goBack()} />
@@ -76,6 +77,6 @@ export const MenuScreen = ({ navigation }) => {
       <VersionContainer>
         <Text>fnb/release v.0.0.1</Text>
       </VersionContainer>
-    </MenuScreenView>
+    </MenuBackground>
   );
 };

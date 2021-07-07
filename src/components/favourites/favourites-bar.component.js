@@ -5,9 +5,17 @@ import { FarmCompactInfo } from "../../features/farms/components/farm-compact-in
 import { Spacer } from "../spacer/spacer.component";
 import { Text } from "../typography/text.component";
 
-const FavouritesWrapper = styled.View`
+const FavouritesWrapper = styled.View.attrs({
+  accessibilityRole: "scrollbar",
+  testID: "FavouritesBar",
+})`
   padding: ${(props) => props.theme.sizepx[0]};
-  padding-top: ${(props) => props.theme.sizepx[4]};
+  border-radius: 15px;
+  border-width: 2px;
+  border-color: ${(props) => props.theme.colors.ui.disabled};
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-top: 55px;
 `;
 
 export const FavouritesBar = ({ favourites, onNavigate }) => {

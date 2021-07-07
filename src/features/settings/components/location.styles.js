@@ -39,7 +39,9 @@ export const MapImage = styled.Image.attrs({
   source: require("../../../../assets/location_round.png"),
   resizeMode: "cover",
 })`
-  border-radius: 200px;
+  border-width: 1px;
+  border-color: ${(props) => props.theme.colors.brand.spring};
+  border-radius: ${(props) => props.theme.sizepx[10]};
   width: ${(props) => props.theme.sizepx[14]};
   height: ${(props) => props.theme.sizepx[14]};
   justify-content: center;

@@ -7,7 +7,7 @@ export const FavouritesContext = createContext();
 export const FavouritesContextProvider = ({ children }) => {
   //favourites state with empty array after first rendering;
   const { user } = useContext(AuthenticationContext);
-  const [favourites, SetFavourites] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   //storing data locally
   const saveFavourites = async (value, uid) => {
     try {
@@ -22,7 +22,7 @@ export const FavouritesContextProvider = ({ children }) => {
     try {
       const value = await AsyncStorage.getItem(`@favourites-${uid}`);
       if (value !== null) {
-        SetFavourites(JSON.parse(value));
+        setFavourites(JSON.parse(value));
       }
     } catch (e) {
       console.log("error loading", e);
@@ -30,12 +30,12 @@ export const FavouritesContextProvider = ({ children }) => {
   };
   // add function;
   const add = (farm) => {
-    SetFavourites([...favourites, farm]);
+    setFavourites([...favourites, farm]);
   };
   //remove function
   const remove = (farm) => {
     const newFavourites = favourites.filter((x) => x.placeId !== farm.placeId);
-    SetFavourites(newFavourites);
+    setFavourites(newFavourites);
   };
 
   useEffect(() => {

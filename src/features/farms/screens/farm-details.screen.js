@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FarmInfoCard } from "../components/farm-info-card.component";
-import { List } from "react-native-paper";
-import { SafeArea } from "../../../components/utils/safe-area.component";
+import { List, Divider } from "react-native-paper";
 import { ScrollView } from "react-native";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { BodyButton } from "../../../components/buttons/screen-button.component";
+import { CartContext } from "../../../services/cart/cart.context";
 
 export const FarmDetailsScreen = ({ route }) => {
+  const { addToCart } = useContext(CartContext);
   const [strawberryExpanded, setStrawberryExpanded] = useState(false);
   const [blueberryExpanded, setBlueberryExpanded] = useState(false);
   const [raspberryExpanded, setRaspberryExpanded] = useState(false);
@@ -13,7 +16,7 @@ export const FarmDetailsScreen = ({ route }) => {
   const { farm } = route.params;
 
   return (
-    <SafeArea>
+    <>
       <FarmInfoCard farm={farm} />
       <ScrollView>
         <List.Accordion
@@ -70,6 +73,16 @@ export const FarmDetailsScreen = ({ route }) => {
           <List.Item title="Gala" />
         </List.Accordion>
       </ScrollView>
-    </SafeArea>
+      <Spacer position="bottom" size="large">
+        <BodyButton
+          title="Order"
+          mode="contained"
+          icon="credit-card"
+          onPress={() => {
+            addToCart({ item: "special", price: 1299 }, farm);
+          }}
+        />
+      </Spacer>
+    </>
   );
 };

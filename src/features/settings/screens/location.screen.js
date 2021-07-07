@@ -11,10 +11,12 @@ import {
 } from "../components/location.styles";
 import { ScreenButton } from "../../../components/buttons/screen-button.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { MenuBackground, MenuCover } from "../components/menu.styles";
 
 export const LocationScreen = ({ navigation }) => {
   return (
-    <LocationScreenView>
+    <MenuBackground>
+      <MenuCover />
       <TopContainer>
         <TopButtonsContainer>
           <ScreenButton
@@ -25,7 +27,7 @@ export const LocationScreen = ({ navigation }) => {
       </TopContainer>
       <ImageContainer>
         <HeaderText variant="header">Select your location</HeaderText>
-        <Spacer size="large">
+        <Spacer size="xxl">
           <MapImage />
         </Spacer>
         <Spacer size="large">
@@ -39,7 +41,7 @@ export const LocationScreen = ({ navigation }) => {
       <BottomContainer>
         <ScreenButton
           title="Select location"
-          onNavigate={() => navigation.navigate("Main")}
+          onNavigate={() => navigation.navigate("SelectCityScreen")}
         />
         <Spacer size="large">
           <ScreenButton
@@ -48,6 +50,6 @@ export const LocationScreen = ({ navigation }) => {
           />
         </Spacer>
       </BottomContainer>
-    </LocationScreenView>
+    </MenuBackground>
   );
 };

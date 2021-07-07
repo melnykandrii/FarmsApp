@@ -8,6 +8,8 @@ import { theme } from "../../infrastructure/theme";
 import HeaderButton from "../../components/utils/header.button.component";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { CheckOutScreen } from "../../features/checkout/screens/checkout.screen";
+import { CheckoutSuccessScreen } from "../../features/checkout/screens/checkout-success.screen";
+import { CheckoutErrorScreen } from "../../features/checkout/screens/checkout-error.screen";
 
 const CartStack = createStackNavigator();
 
@@ -49,6 +51,16 @@ export const CheckoutNavigator = () => {
             </HeaderButtons>
           ),
         })}
+      />
+      <CartStack.Screen
+        name="CheckoutSuccess"
+        component={CheckoutSuccessScreen}
+        options={{ headerShown: false }}
+      />
+      <CartStack.Screen
+        name="CheckoutError"
+        component={CheckoutErrorScreen}
+        options={{ headerShown: false }}
       />
     </CartStack.Navigator>
   );
