@@ -46,7 +46,7 @@ export const LocationScreen = ({ navigation }) => {
         <Spacer size="large">
           <ScreenButton
             title="Enable location"
-            onNavigate={() => navigation.navigate("Main")}
+            onNavigate={() => navigation.navigate("SelectLocationScreen")}
           />
         </Spacer>
       </BottomContainer>

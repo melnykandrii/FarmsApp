@@ -24,7 +24,7 @@ export const BodyButton = (props) => {
 
 export const ScreenButton = (props) => {
   return (
-    <TouchableOpacity onPress={props.onNavigate}>
+    <TouchableOpacity {...props} onPress={props.onNavigate}>
       <Text variant="button">{props.title}</Text>
     </TouchableOpacity>
   );

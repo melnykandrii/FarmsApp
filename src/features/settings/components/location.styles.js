@@ -28,11 +28,24 @@ export const ImageContainer = styled.View`
   padding: ${(props) => props.theme.sizepx[1]};
 `;
 
+export const SearchContainer = styled.View`
+  flex: 3;
+  padding: ${(props) => props.theme.sizepx[0]};
+`;
+
+export const ButtonContainer = styled.View`
+  flex: 3;
+  justify-content: flex-start;
+  align-items: center;
+  padding: ${(props) => props.theme.sizepx[0]};
+`;
+
 export const BottomContainer = styled.View`
   flex: 3;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: ${(props) => props.theme.sizepx[2]};
 `;
 
 export const MapImage = styled.Image.attrs({

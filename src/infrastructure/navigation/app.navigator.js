@@ -3,6 +3,7 @@ import { FarmsContextProvider } from "../../services/farms/farms.context";
 import { LocationContextProvider } from "../../services/location/location.context";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 import { MainNavigator } from "./main.navigator";
+import { AuthNavigator } from "./authen.navigator";
 import { CartContextProvider } from "../../services/cart/cart.context";
 
 export const AppNavigator = () => {
@@ -11,7 +12,7 @@ export const AppNavigator = () => {
       <LocationContextProvider>
         <FarmsContextProvider>
           <CartContextProvider>
-            <MainNavigator />
+            <AuthNavigator />
           </CartContextProvider>
         </FarmsContextProvider>
       </LocationContextProvider>
