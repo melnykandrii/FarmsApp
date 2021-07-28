@@ -15,10 +15,11 @@ import {
   AvatarIcon,
   VersionContainer,
   AvatarPhoto,
-} from "../components/menu.styles";
+  MenuBackground,
+  MenuCover,
+} from "../styles/menu.styles";
 import { MenuItem } from "../components/menu.components";
 import { ScreenButton } from "../../../components/buttons/screen-button.component";
-import { MenuBackground, MenuCover } from "../components/menu.styles";
 
 export const MenuScreen = ({ navigation }) => {
   const { onLogOut, user } = useContext(AuthenticationContext);

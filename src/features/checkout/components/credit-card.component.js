@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  CreditCardInput,
-  LiteCreditCardInput,
-} from "react-native-credit-card-input";
+import { CreditCardInput } from "react-native-credit-card-input";
 import { cardTokenRequest } from "../../../services/checkout/checkout.service";
 
 export const CreditCard = ({ name, onSuccess, onError }) => {
@@ -10,7 +7,6 @@ export const CreditCard = ({ name, onSuccess, onError }) => {
   const onChange = async (cartInfo) => {
     const { values, status } = cartInfo;
     const isIncomplete = Object.values(status).includes("incomplete");
-    const isDateCorrect = Object.values(status).includes("invalid");
     const expiry = values.expiry.split("/");
 
     const card = {

@@ -16,6 +16,7 @@ export const CartContextProvider = ({ children }) => {
       await AsyncStorage.setItem(`@cart-${uid}`, jsonValue);
     } catch (e) {
       console.log("error storing", e);
+      setError(e);
     }
   };
 
@@ -29,6 +30,7 @@ export const CartContextProvider = ({ children }) => {
       }
     } catch (e) {
       console.log("error loading", e);
+      setError(e);
     }
   };
 

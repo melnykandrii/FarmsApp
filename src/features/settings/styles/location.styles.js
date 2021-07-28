@@ -1,6 +1,7 @@
-import { Platform } from "react-native";
+import { Platform, ActivityIndicator } from "react-native";
 import styled from "styled-components/native";
 import { Text } from "../../../components/typography/text.component";
+import { theme } from "../../../infrastructure/theme";
 
 export const LocationScreenView = styled.View`
   flex: 1;
@@ -28,6 +29,18 @@ export const ImageContainer = styled.View`
   padding: ${(props) => props.theme.sizepx[1]};
 `;
 
+export const ActivityContainer = styled.View`
+  flex: 2;
+  padding: ${(props) => props.theme.sizepx[1]};
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Activity = styled(ActivityIndicator).attrs({
+  color: theme.colors.brand.spring,
+  size: "large",
+})``;
+
 export const SearchContainer = styled.View`
   flex: 3;
   padding: ${(props) => props.theme.sizepx[0]};
@@ -41,7 +54,7 @@ export const ButtonContainer = styled.View`
 `;
 
 export const BottomContainer = styled.View`
-  flex: 3;
+  flex: 2;
   flex-direction: column;
   justify-content: center;
   align-items: center;

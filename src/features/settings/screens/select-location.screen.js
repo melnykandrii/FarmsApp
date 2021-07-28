@@ -7,13 +7,10 @@ import {
   HeaderText,
   SearchContainer,
   ButtonContainer,
-} from "../components/location.styles";
-import {
-  ScreenButton,
-  BodyButton,
-} from "../../../components/buttons/screen-button.component";
+} from "../styles/location.styles";
+import { ScreenButton } from "../../../components/buttons/screen-button.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { MenuBackground, MenuCover } from "../components/menu.styles";
+import { MenuBackground, MenuCover } from "../styles/menu.styles";
 import { SearchView } from "../components/search.component";
 import { LocationContext } from "../../../services/location/location.context";
 import { theme } from "../../../infrastructure/theme";

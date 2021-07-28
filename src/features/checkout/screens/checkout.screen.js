@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { ScrollView, View } from "react-native";
 import { BodyButton } from "../../../components/buttons/screen-button.component";
 import { CartRefresher } from "../../../components/refresher/refresher.component";

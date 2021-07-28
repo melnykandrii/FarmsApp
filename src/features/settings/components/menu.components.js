@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { Item, ListIcon } from "./menu.styles";
+import { Item, ListIcon } from "../styles/menu-component.styles";
 import { Text } from "../../../components/typography/text.component";
 
 export const MenuItem = (props) => {

@@ -9,10 +9,7 @@ import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
-import {
-  AccountBackground,
-  AccountCover,
-} from "../../accounts/components/account.styles";
+import { AccountBackground } from "../../accounts/components/account.styles";
 
 const SettingItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[4]};

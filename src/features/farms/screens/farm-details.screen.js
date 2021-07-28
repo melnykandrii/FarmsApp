@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { FarmInfoCard } from "../components/farm-info-card.component";
-import { List, Divider } from "react-native-paper";
+import { List } from "react-native-paper";
 import { ScrollView } from "react-native";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { BodyButton } from "../../../components/buttons/screen-button.component";

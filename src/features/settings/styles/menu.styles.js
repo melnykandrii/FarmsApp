@@ -1,4 +1,4 @@
-import { List, Avatar } from "react-native-paper";
+import { Avatar } from "react-native-paper";
 import styled from "styled-components/native";
 import { theme } from "../../../infrastructure/theme";
 import { Platform } from "react-native";
@@ -45,10 +45,6 @@ export const VersionContainer = styled.View`
   align-items: center;
 `;
 
-export const Item = styled(List.Item)`
-  padding: ${(props) => props.theme.space[4]};
-`;
-
 export const AvatarContainer = styled.View`
   align-items: center;
 `;
@@ -62,8 +58,4 @@ export const AvatarIcon = styled(Avatar.Icon).attrs({
 export const AvatarPhoto = styled(Avatar.Image).attrs({
   size: 180,
   backgroundColor: theme.colors.brand.spring,
-})``;
-
-export const ListIcon = styled(List.Icon).attrs({
-  color: theme.colors.brand.spring,
 })``;

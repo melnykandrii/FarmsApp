@@ -8,7 +8,7 @@ import {
   ButtonContainer,
   FlashIcon,
   SnapIcon,
-} from "../components/camera.styles";
+} from "../styles/camera.styles";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
