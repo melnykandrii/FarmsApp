@@ -11,11 +11,33 @@ export const FarmsContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { location } = useContext(LocationContext);
+  const [key1, setKey1] = useState("");
+  const [key2, setKey2] = useState("");
+  const [key3, setKey3] = useState("");
 
-  const retrieveFarms = (loc) => {
+  useEffect((isStrawberry, isBlueberry, isApple) => {
+    if (isStrawberry) {
+      setKey1("strawberry");
+    } else {
+      setKey1("");
+    }
+    if (isBlueberry) {
+      setKey2("blueberry");
+    } else {
+      setKey2("");
+    }
+    if (isApple) {
+      setKey3("apple");
+    } else {
+      setKey3("");
+    }
+  }, []);
+  console.log("Straw-", key1, key2, key3);
+
+  const retrieveFarms = (loc, k1, k2, k3) => {
     setIsLoading(true);
     setFarms([]);
-    farmsRequest(loc)
+    farmsRequest(loc, k1, k2, k3)
       .then(farmsTransform)
       .then((results) => {
         setError(null);
@@ -30,6 +52,7 @@ export const FarmsContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (location) {
+      setIsLoading(true);
       const locationString = `${location.lat},${location.lng}`;
       retrieveFarms(locationString);
     }

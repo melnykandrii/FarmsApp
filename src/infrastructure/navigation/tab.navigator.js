@@ -7,6 +7,7 @@ import { Icon } from "react-native-elements";
 import { FavNavigator } from "./favourites.navigator";
 import { CheckoutNavigator } from "./checkout.navigator";
 import { CartContext } from "../../services/cart/cart.context";
+import { TestMapScreen } from "../../features/map/screens/test.map.screen";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,6 +25,8 @@ export const TabNavigator = () => {
             iconName = focused ? "ios-map" : "ios-map-outline";
           } else if (route.name === "Favourite") {
             iconName = focused ? "heart" : "heart-outline";
+          } else if (route.name === "TestMap") {
+            iconName = focused ? "ios-map" : "ios-map-outline";
           } else if (route.name === "Cart") {
             iconName = focused ? "cart" : "cart-outline";
           }
@@ -41,6 +44,7 @@ export const TabNavigator = () => {
       <Tab.Screen name="Farms" component={FarmsNavigator} />
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Favourite" component={FavNavigator} />
+      <Tab.Screen name="TestMap" component={TestMapScreen} />
       <Tab.Screen
         name="Cart"
         component={CheckoutNavigator}

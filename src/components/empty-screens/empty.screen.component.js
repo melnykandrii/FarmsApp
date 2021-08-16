@@ -4,7 +4,7 @@ import { Text } from "../typography/text.component";
 import { Spacer } from "../spacer/spacer.component";
 import { theme } from "../../infrastructure/theme";
 import { EmptyView } from "./empty.screen.styles";
-import { CartIcon } from "./empty.screen.styles";
+import { EmptyIcon } from "./empty.screen.styles";
 
 export const EmptyScreen = (props) => {
   return (
@@ -21,23 +21,13 @@ export const EmptyScreen = (props) => {
   );
 };
 
-export const EmptyCartScreen = (props) => {
+export const EmptyStateScreen = (props) => {
   return (
     <EmptyView>
-      <CartIcon {...props} icon={props.icon} />
+      <EmptyIcon icon={props.icon} />
       <Spacer size="large">
-        <Text variant="body">{props.text}</Text>
-      </Spacer>
-    </EmptyView>
-  );
-};
-
-export const EmptyFavouritesScreen = (props) => {
-  return (
-    <EmptyView>
-      <CartIcon icon={props.icon} />
-      <Spacer size="large">
-        <Text variant="body">{props.text}</Text>
+        <Text variant="emptyBody">{props.label}</Text>
+        <Text variant="emptyDescription">{props.description}</Text>
       </Spacer>
     </EmptyView>
   );

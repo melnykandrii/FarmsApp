@@ -1,18 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import React from "react";
 import { Searchbar } from "react-native-paper";
 import { theme } from "../../../infrastructure/theme";
-import { LocationContext } from "../../../services/location/location.context";
 import { SearchView } from "../styles/search.styles";
 
-export const Search = ({ navigation }) => {
-  const { keyword, search } = useContext(LocationContext);
-  const [searchKeyword, setSearchKeyword] = useState(keyword);
-
-  useEffect(() => {
-    setSearchKeyword(keyword);
-    console.log(keyword);
-  }, [keyword]);
-
+export const Search = ({ setSearchKeyword }) => {
   return (
     <SearchView>
       <Searchbar
@@ -21,10 +12,9 @@ export const Search = ({ navigation }) => {
         }}
         placeholder="Select your location"
         value={null}
-        onSubmitEditing={() => {
-          search(searchKeyword);
-          navigation.navigate("Main");
-        }}
+        autoCompleteType="street-address"
+        dataDetectorTypes="address"
+        returnKeyType="done"
         onChangeText={(text) => {
           setSearchKeyword(text);
         }}

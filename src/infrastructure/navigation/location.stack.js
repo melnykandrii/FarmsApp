@@ -4,8 +4,6 @@ import {
   CardStyleInterpolators,
 } from "@react-navigation/stack";
 import { LocationScreen } from "../../features/settings/screens/location.screen";
-import { SelectCityScreen } from "../../features/settings/screens/select-city.screen";
-import { NextScreen } from "../../features/settings/screens/next.screen";
 import { SelectLocationScreen } from "../../features/settings/screens/select-location.screen";
 
 const LocationStack = createStackNavigator();
@@ -13,6 +11,7 @@ const LocationStack = createStackNavigator();
 export const LocationNavigator = () => {
   return (
     <LocationStack.Navigator
+      initialRouteName="LocationScreen"
       headerMode="none"
       screenOptions={({ navigation }) => ({
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
@@ -20,14 +19,9 @@ export const LocationNavigator = () => {
     >
       <LocationStack.Screen name="LocationScreen" component={LocationScreen} />
       <LocationStack.Screen
-        name="SelectCityScreen"
-        component={SelectCityScreen}
-      />
-      <LocationStack.Screen
         name="SelectLocationScreen"
         component={SelectLocationScreen}
       />
-      <LocationStack.Screen name="NextScreen" component={NextScreen} />
     </LocationStack.Navigator>
   );
 };

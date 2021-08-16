@@ -19,7 +19,10 @@ const addGoogleImage = (farm) => {
 };
 
 module.exports.placesRequest = (request, response, client) => {
-  const { location, mock } = url.parse(request.url, true).query;
+  const { key1, key2, key3, location, mock } = url.parse(
+    request.url,
+    true
+  ).query;
   if (mock === "true") {
     const data = mocks[location];
     if (data) {
@@ -31,8 +34,8 @@ module.exports.placesRequest = (request, response, client) => {
     .placesNearby({
       params: {
         location: location,
-        radius: 70000,
-        keyword: "self+picking+strawberry+farm",
+        radius: 50000,
+        keyword: `self+picking+${key1}+${key2}+${key3}+farm`,
         key: functions.config().google.key,
       },
       timeout: 1000,

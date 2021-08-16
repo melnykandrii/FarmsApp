@@ -1,5 +1,12 @@
 import React, { useContext, useState, useCallback } from "react";
-import { RefreshControl, TouchableOpacity } from "react-native";
+import {
+  RefreshControl,
+  TouchableOpacity,
+  Dimensions,
+  StyleSheet,
+} from "react-native";
+import { Button, Portal, Provider, Modal } from "react-native-paper";
+import { Text } from "../../../components/typography/text.component";
 
 import { FarmInfoCard } from "../components/farm-info-card.component";
 import { FarmList } from "../components/farm-list.styles";
@@ -12,18 +19,31 @@ import { FavouritesContext } from "../../../services/favourites/favourites.conte
 import { FadeInView } from "../../../components/animations/fade.animation";
 import { LocationContext } from "../../../services/location/location.context";
 import { ErrorScreen } from "../../../components/error-screen/error.screen.component";
+import { EmptyState } from "../../../components/empty-screens/empty-state.component";
+import { FavouritesRefresher } from "../../../components/refresher/refresher.component";
+import { FiltersModal } from "../components/filters-modal.component";
 
+const ButtonSizeH = 50;
+const ButtonSizeW = 140;
+const deviceWidth = Dimensions.get("window").width / 2 - ButtonSizeW / 2;
+const deviceHeight = Dimensions.get("window").height / 1.3;
+const deviceWidthT = Dimensions.get("window").width / 2 - ButtonSizeW / 2;
+const deviceHeightT = Dimensions.get("window").height / 1.5;
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
-export const FarmsScreen = ({ navigation }) => {
+export const FarmsScreen = ({ navigation, route }) => {
   const { error: locationError } = useContext(LocationContext);
   const { isLoading, farms, error } = useContext(FarmsContext);
   const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const hasError = !!error || !!locationError;
+  const [visible, setVisible] = useState(false);
+
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -42,8 +62,28 @@ export const FarmsScreen = ({ navigation }) => {
     );
   }
 
+  if (!farms.length && !hasError && !isLoading) {
+    return (
+      <>
+        <Search
+          isFavouritesToggled={isToggled}
+          onFavouritesToggled={() => setIsToggled(!isToggled)}
+        />
+        <EmptyState
+          label="No farms for the selected location!"
+          description="Please search for another location or adjust your filter!"
+          icon="cloud-off-outline"
+        />
+      </>
+    );
+  }
+
+  const onApply = () => {
+    hideModal();
+  };
+
   return (
-    <>
+    <Provider>
       {isLoading && <LoadingState />}
       <Search
         isFavouritesToggled={isToggled}
@@ -58,7 +98,10 @@ export const FarmsScreen = ({ navigation }) => {
       {hasError && (
         <ErrorScreen text="Something went wrong retriving the data" />
       )}
-      {!hasError && (
+      {!farms.length && !hasError && !isLoading && (
+        <FavouritesRefresher text="No favourites yet" icon="heart-off" />
+      )}
+      {!hasError && farms && (
         <FarmList
           data={farms}
           renderItem={({ item }) => {
@@ -89,6 +132,49 @@ export const FarmsScreen = ({ navigation }) => {
           }
         />
       )}
-    </>
+      <Button
+        icon="filter-outline"
+        mode="text"
+        onPress={showModal}
+        style={styles.fav}
+        theme={{
+          colors: {
+            primary: theme.colors.bg.primary,
+          },
+        }}
+      >
+        Filter
+      </Button>
+      <FiltersModal visible={visible} hideModal={hideModal} onApply={onApply} />
+    </Provider>
   );
 };
+
+const styles = StyleSheet.create({
+  fav: {
+    position: "absolute",
+    top: deviceHeight,
+    right: deviceWidth,
+    zIndex: 9,
+    borderWidth: 2,
+    backgroundColor: theme.colors.brand.spring,
+    height: ButtonSizeH,
+    width: ButtonSizeW,
+    justifyContent: "center",
+    borderColor: theme.colors.bg.primary,
+    borderRadius: 10,
+  },
+  test: {
+    position: "absolute",
+    top: deviceHeightT,
+    right: deviceWidthT,
+    zIndex: 9,
+    borderWidth: 2,
+    backgroundColor: theme.colors.brand.spring,
+    height: ButtonSizeH,
+    width: ButtonSizeW,
+    justifyContent: "center",
+    borderColor: theme.colors.bg.primary,
+    borderRadius: 10,
+  },
+});

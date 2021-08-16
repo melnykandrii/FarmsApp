@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ScrollView, View } from "react-native";
 import { BodyButton } from "../../../components/buttons/screen-button.component";
-import { CartRefresher } from "../../../components/refresher/refresher.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CartContext } from "../../../services/cart/cart.context";
 import { FarmInfoCard } from "../../farms/components/farm-info-card.component";
@@ -14,6 +13,7 @@ import {
 } from "../components/check-out.styles";
 import { KeyboardView } from "../../../components/utils/keyboard-avoiding.component";
 import { payRequest } from "../../../services/checkout/checkout.service";
+import { EmptyState } from "../../../components/empty-screens/empty-state.component";
 
 export const CheckOutScreen = ({ navigation }) => {
   const { cart, farm, sum, clearCart } = useContext(CartContext);
@@ -120,6 +120,10 @@ export const CheckOutScreen = ({ navigation }) => {
       </ScrollView>
     </KeyboardView>
   ) : (
-    <CartRefresher text="Your Cart is Empty!" icon="cart-off" />
+    <EmptyState
+      label="Your Cart is Empty!"
+      description="Please add any product to see it in here."
+      icon="cart-off"
+    />
   );
 };

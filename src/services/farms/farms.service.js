@@ -2,12 +2,12 @@
 import camelize from "camelize";
 import { host, isMock } from "../../utils/env";
 
-export const farmsRequest = (location) => {
-  return fetch(`${host}/placesNearby?location=${location}&mock=${isMock}`).then(
-    (res) => {
-      return res.json();
-    }
-  );
+export const farmsRequest = (location, key1, key2, key3) => {
+  return fetch(
+    `${host}/placesNearby?location=${location}&mock=${isMock}&key1=${key1}&key2=${key2}&key3=${key3}`
+  ).then((res) => {
+    return res.json();
+  });
   /*  return new Promise((resolve, reject) => {
     const mock = mocks[location];
     if (!mock) {

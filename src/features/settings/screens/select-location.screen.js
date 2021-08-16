@@ -11,21 +11,19 @@ import {
 import { ScreenButton } from "../../../components/buttons/screen-button.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { MenuBackground, MenuCover } from "../styles/menu.styles";
-import { SearchView } from "../components/search.component";
 import { LocationContext } from "../../../services/location/location.context";
-import { theme } from "../../../infrastructure/theme";
-import { Searchbar } from "react-native-paper";
 import { SelectButton } from "../../../components/buttons/buttons.component";
+import { Search } from "../components/search.component";
 
 export const SelectLocationScreen = ({ navigation }) => {
   const { search } = useContext(LocationContext);
   const keyword = "";
   const [searchKeyword, setSearchKeyword] = useState(keyword);
-  console.log(searchKeyword);
 
   useEffect(() => {
     setSearchKeyword(keyword);
   }, [keyword]);
+
   return (
     <MenuBackground>
       <MenuCover />
@@ -40,27 +38,13 @@ export const SelectLocationScreen = ({ navigation }) => {
       <SearchContainer>
         <HeaderText variant="header">Select your location</HeaderText>
         <Spacer size="xxl">
-          <SearchView>
-            <Searchbar
-              theme={{
-                colors: { primary: theme.colors.brand.spring },
-              }}
-              placeholder="Select your location"
-              value={null}
-              autoCompleteType="street-address"
-              dataDetectorTypes="address"
-              returnKeyType="done"
-              onChangeText={(text) => {
-                setSearchKeyword(text);
-              }}
-            />
-          </SearchView>
+          <Search setSearchKeyword={setSearchKeyword} />
         </Spacer>
       </SearchContainer>
       <ButtonContainer>
         <Spacer size="xxl" position="top">
           <SelectButton
-            title="Select"
+            title="Confirm"
             onPress={() => {
               search(searchKeyword);
               navigation.navigate("Main");

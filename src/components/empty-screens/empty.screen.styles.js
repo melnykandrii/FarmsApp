@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
 import { Avatar } from "react-native-paper";
 
-export const CartIcon = styled(Avatar.Icon).attrs({
-  size: 128,
+export const EmptyIcon = styled(Avatar.Icon).attrs({
+  size: 100,
 })`
   background: ${(props) => props.bg || props.theme.colors.brand.spring};
 `;

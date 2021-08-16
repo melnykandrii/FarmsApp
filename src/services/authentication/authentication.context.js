@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 import {
   loginRequest,
@@ -13,11 +13,17 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  const [retriveUser, setRetriveUser] = useState(true);
+
+  useEffect(() => {
+    setRetriveUser(false);
+  }, []);
 
   authStateChanged((usr) => {
     if (usr) {
       setUser(usr);
       setIsLoading(false);
+      setRetriveUser(false);
     } else {
     }
   });
@@ -73,6 +79,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         onLogin,
         onSignUp,
         onLogOut,
+        retriveUser,
       }}
     >
       {children}
