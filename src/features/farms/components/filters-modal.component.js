@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Portal } from "react-native-paper";
 import { Text } from "../../../components/typography/text.component";
 import { CloseButton } from "../../../components/buttons/close.button.component";
@@ -14,13 +14,21 @@ import { BodyButton } from "../../../components/buttons/body.buttons";
 import { FilterSwitch } from "../../../components/filters/FilterSwitch";
 import { theme } from "../../../infrastructure/theme";
 
-export const FiltersModal = ({ hideModal, visible, onApply }) => {
-  const [isStrawberry, setIsStrawberry] = useState(false);
-  const [isBlueberry, setIsBlueberry] = useState(false);
-  const [isApple, setIsApple] = useState(false);
-  const [isPumpkin, setIsPumpkin] = useState(false);
-  const [isRaspberry, setIsRaspberry] = useState(false);
-
+export const FiltersModal = ({
+  isStrawberry,
+  isRaspberry,
+  isBlueberry,
+  isApple,
+  isPumpkin,
+  setIsStrawberry,
+  setIsRaspberry,
+  setIsBlueberry,
+  setIsApple,
+  setIsPumpkin,
+  hideModal,
+  visible,
+  onApply,
+}) => {
   return (
     <Portal>
       <ModalContainer visible={visible} onDismiss={hideModal}>

@@ -16,8 +16,7 @@ import { SelectButton } from "../../../components/buttons/buttons.component";
 import { Search } from "../components/search.component";
 
 export const SelectLocationScreen = ({ navigation }) => {
-  const { search } = useContext(LocationContext);
-  const keyword = "";
+  const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
   useEffect(() => {

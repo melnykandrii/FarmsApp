@@ -1,12 +1,11 @@
-import React, { useContext, useState, useCallback } from "react";
+import React, { useContext, useState, useCallback, useEffect } from "react";
 import {
   RefreshControl,
   TouchableOpacity,
   Dimensions,
   StyleSheet,
 } from "react-native";
-import { Button, Portal, Provider, Modal } from "react-native-paper";
-import { Text } from "../../../components/typography/text.component";
+import { Button, Provider } from "react-native-paper";
 
 import { FarmInfoCard } from "../components/farm-info-card.component";
 import { FarmList } from "../components/farm-list.styles";
@@ -27,15 +26,28 @@ const ButtonSizeH = 50;
 const ButtonSizeW = 140;
 const deviceWidth = Dimensions.get("window").width / 2 - ButtonSizeW / 2;
 const deviceHeight = Dimensions.get("window").height / 1.3;
-const deviceWidthT = Dimensions.get("window").width / 2 - ButtonSizeW / 2;
-const deviceHeightT = Dimensions.get("window").height / 1.5;
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
 export const FarmsScreen = ({ navigation, route }) => {
   const { error: locationError } = useContext(LocationContext);
-  const { isLoading, farms, error } = useContext(FarmsContext);
+  const {
+    isLoading,
+    farms,
+    error,
+    filter,
+    filterS,
+    filterR,
+    filterB,
+    filterA,
+    filterP,
+  } = useContext(FarmsContext);
+  const [filterKeywordS, setFilterKeywordS] = useState(filterS);
+  const [filterKeywordR, setFilterKeywordR] = useState(filterR);
+  const [filterKeywordB, setFilterKeywordB] = useState(filterB);
+  const [filterKeywordA, setFilterKeywordA] = useState(filterA);
+  const [filterKeywordP, setFilterKeywordP] = useState(filterP);
   const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -44,6 +56,50 @@ export const FarmsScreen = ({ navigation, route }) => {
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+  const [isStrawberry, setIsStrawberry] = useState(false);
+  const [isRaspberry, setIsRaspberry] = useState(false);
+  const [isBlueberry, setIsBlueberry] = useState(false);
+  const [isApple, setIsApple] = useState(false);
+  const [isPumpkin, setIsPumpkin] = useState(false);
+
+  useEffect(() => {
+    if (isStrawberry) {
+      setFilterKeywordS("strawberry");
+    } else {
+      setFilterKeywordS("");
+    }
+    if (isRaspberry) {
+      setFilterKeywordR("raspberry");
+    } else {
+      setFilterKeywordR("");
+    }
+    if (isBlueberry) {
+      setFilterKeywordB("blueberry");
+    } else {
+      setFilterKeywordB("");
+    }
+    if (isApple) {
+      setFilterKeywordA("apple");
+    } else {
+      setFilterKeywordA("");
+    }
+    if (isPumpkin) {
+      setFilterKeywordP("pumpkin");
+    } else {
+      setFilterKeywordP("");
+    }
+  }, [isApple, isBlueberry, isPumpkin, isRaspberry, isStrawberry]);
+
+  const onApply = () => {
+    hideModal();
+    filter(
+      filterKeywordS,
+      filterKeywordR,
+      filterKeywordB,
+      filterKeywordP,
+      filterKeywordA
+    );
+  };
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -77,10 +133,6 @@ export const FarmsScreen = ({ navigation, route }) => {
       </>
     );
   }
-
-  const onApply = () => {
-    hideModal();
-  };
 
   return (
     <Provider>
@@ -145,7 +197,21 @@ export const FarmsScreen = ({ navigation, route }) => {
       >
         Filter
       </Button>
-      <FiltersModal visible={visible} hideModal={hideModal} onApply={onApply} />
+      <FiltersModal
+        visible={visible}
+        hideModal={hideModal}
+        onApply={onApply}
+        setIsStrawberry={setIsStrawberry}
+        setIsRaspberry={setIsRaspberry}
+        setIsBlueberry={setIsBlueberry}
+        setIsApple={setIsApple}
+        setIsPumpkin={setIsPumpkin}
+        isStrawberry={isStrawberry}
+        isRaspberry={isRaspberry}
+        isBlueberry={isBlueberry}
+        isApple={isApple}
+        isPumpkin={isPumpkin}
+      />
     </Provider>
   );
 };
@@ -155,19 +221,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: deviceHeight,
     right: deviceWidth,
-    zIndex: 9,
-    borderWidth: 2,
-    backgroundColor: theme.colors.brand.spring,
-    height: ButtonSizeH,
-    width: ButtonSizeW,
-    justifyContent: "center",
-    borderColor: theme.colors.bg.primary,
-    borderRadius: 10,
-  },
-  test: {
-    position: "absolute",
-    top: deviceHeightT,
-    right: deviceWidthT,
     zIndex: 9,
     borderWidth: 2,
     backgroundColor: theme.colors.brand.spring,
