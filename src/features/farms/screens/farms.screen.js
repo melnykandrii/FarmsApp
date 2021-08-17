@@ -66,27 +66,36 @@ export const FarmsScreen = ({ navigation, route }) => {
     if (isStrawberry) {
       setFilterKeywordS("strawberry");
     } else {
-      setFilterKeywordS("");
+      setFilterKeywordS("farms");
     }
     if (isRaspberry) {
       setFilterKeywordR("raspberry");
     } else {
-      setFilterKeywordR("");
+      setFilterKeywordR("farms");
     }
     if (isBlueberry) {
-      setFilterKeywordB("blueberry");
+      setFilterKeywordB("blueberries");
     } else {
-      setFilterKeywordB("");
+      setFilterKeywordB("farm");
     }
     if (isApple) {
       setFilterKeywordA("apple");
     } else {
-      setFilterKeywordA("");
+      setFilterKeywordA("farm");
     }
     if (isPumpkin) {
       setFilterKeywordP("pumpkin");
     } else {
-      setFilterKeywordP("");
+      setFilterKeywordP("self");
+    }
+    if (
+      !isStrawberry &&
+      !isRaspberry &&
+      !isBlueberry &&
+      !isApple &&
+      !isPumpkin
+    ) {
+      setFilterKeywordS("vegetables");
     }
   }, [isApple, isBlueberry, isPumpkin, isRaspberry, isStrawberry]);
 
@@ -96,8 +105,8 @@ export const FarmsScreen = ({ navigation, route }) => {
       filterKeywordS,
       filterKeywordR,
       filterKeywordB,
-      filterKeywordP,
-      filterKeywordA
+      filterKeywordA,
+      filterKeywordP
     );
   };
 
@@ -117,7 +126,7 @@ export const FarmsScreen = ({ navigation, route }) => {
       </>
     );
   }
-
+  /*
   if (!farms.length && !hasError && !isLoading) {
     return (
       <>
@@ -132,7 +141,7 @@ export const FarmsScreen = ({ navigation, route }) => {
         />
       </>
     );
-  }
+  }*/
 
   return (
     <Provider>
@@ -147,11 +156,15 @@ export const FarmsScreen = ({ navigation, route }) => {
           onNavigate={navigation.navigate}
         />
       )}
-      {hasError && (
+      {hasError && !isLoading && (
         <ErrorScreen text="Something went wrong retriving the data" />
       )}
       {!farms.length && !hasError && !isLoading && (
-        <FavouritesRefresher text="No favourites yet" icon="heart-off" />
+        <EmptyState
+          label="No farms for the selected location!"
+          description="Please search for another location or adjust your filter!"
+          icon="cloud-off-outline"
+        />
       )}
       {!hasError && farms && (
         <FarmList

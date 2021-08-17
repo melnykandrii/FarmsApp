@@ -2,9 +2,9 @@
 import camelize from "camelize";
 import { host, isMock } from "../../utils/env";
 
-export const farmsRequest = (location, key1, key2, key3) => {
+export const farmsRequest = (location, key1, key2, key3, key4, key5) => {
   return fetch(
-    `${host}/placesNearby?location=${location}&mock=${isMock}&key1=${key1}&key2=${key2}&key3=${key3}`
+    `${host}/placesNearby?location=${location}&mock=${isMock}&key1=${key1}&key2=${key2}&key3=${key3}&key4=${key4}&key5=${key5}`
   ).then((res) => {
     return res.json();
   });

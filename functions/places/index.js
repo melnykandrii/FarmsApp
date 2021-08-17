@@ -19,7 +19,7 @@ const addGoogleImage = (farm) => {
 };
 
 module.exports.placesRequest = (request, response, client) => {
-  const { key1, key2, key3, location, mock } = url.parse(
+  const { key1, key2, key3, key4, key5, location, mock } = url.parse(
     request.url,
     true
   ).query;
@@ -35,7 +35,7 @@ module.exports.placesRequest = (request, response, client) => {
       params: {
         location: location,
         radius: 50000,
-        keyword: `self+picking+${key1}+${key2}+${key3}+farm`,
+        keyword: `self+picking+${key1}+${key2}+${key3}+${key4}+${key5}+farm`,
         key: functions.config().google.key,
       },
       timeout: 1000,
