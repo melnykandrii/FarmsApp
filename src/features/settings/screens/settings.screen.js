@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from "react";
+import React, { useContext, useCallback } from "react";
 import { TouchableOpacity } from "react-native";
 import { List, Avatar } from "react-native-paper";
 import { SafeArea } from "../../../components/utils/safe-area.component";
@@ -7,7 +7,6 @@ import styled from "styled-components/native";
 import { theme } from "../../../infrastructure/theme";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
 import { AccountBackground } from "../../accounts/components/account.styles";
 
@@ -26,18 +25,16 @@ const AvatarIcon = styled(Avatar.Icon).attrs({
 })``;
 
 export const SettingsScreen = ({ navigation }) => {
-  const { onLogOut, user } = useContext(AuthenticationContext);
-  const [photo, setPhoto] = useState(null);
+  const { onLogOut, user, photo, getProfilePicture } = useContext(
+    AuthenticationContext
+  );
 
-  const getProfilePicture = async (currentUser) => {
-    const photoUri = await AsyncStorage.getItem(`${currentUser.uid}-photo`);
-    setPhoto(photoUri);
-  };
   useFocusEffect(
     useCallback(() => {
       getProfilePicture(user);
-    }, [user])
+    }, [getProfilePicture, user])
   );
+
   return (
     <AccountBackground>
       <SafeArea>

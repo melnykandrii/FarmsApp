@@ -3,6 +3,7 @@ import MapView from "react-native-maps";
 import styled from "styled-components/native";
 import { LocationContext } from "../../../services/location/location.context";
 import { FarmsContext } from "../../../services/farms/farms.context";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 import { Search } from "../components/search.component";
 import { MapCallout } from "../components/map-callout.component";
@@ -15,7 +16,7 @@ const Map = styled(MapView)`
 export const FarmsMap = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { farms = [] } = useContext(FarmsContext);
-
+  const { user, photo } = useContext(AuthenticationContext);
   const [latDelta, setLatDelta] = useState(0);
   const { lat, lng, viewport } = location;
   //console.log(location);

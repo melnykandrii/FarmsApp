@@ -1,45 +1,36 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Button } from "react-native";
+import React, { useContext, useEffect, useState, useCallback } from "react";
+
+import { useFocusEffect } from "@react-navigation/native";
 import MapView from "react-native-maps";
 import { LocationContext } from "../../../services/location/location.context";
 import { FarmsContext } from "../../../services/farms/farms.context";
 
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { Map } from "../styles/map.styles";
 import { Search } from "../components/search.component";
 import { MapCallout } from "../components/map-callout.component";
 import { theme } from "../../../infrastructure/theme";
+import { UserCallout } from "../components/map-user-callout.component";
 
-const TestMap = ({ navigation, route }) => {
+const TestMap = ({ navigation }) => {
   const { coord, location } = useContext(LocationContext);
   const { farms = [] } = useContext(FarmsContext);
+  const { user, photo, getProfilePicture } = useContext(AuthenticationContext);
   const [latDelta, setLatDelta] = useState(0);
   const { lat, lng, viewport } = location;
-  const [userLocation, setUserLocation] = useState(coord);
-
-  /*const usrlocation = route.params;
-
-  useEffect(() => {
-    if (usrlocation) {
-      setUserLocation({
-        lat: usrlocation.userlocation.latitude,
-        lng: usrlocation.userlocation.longitude,
-      });
-    }
-  }, [usrlocation]);
-
-  console.log("TestScreen", userLocation);
-
-  useEffect(() => {
-    if (userLocation) {
-      onMyLocation(userLocation);
-    }
-  }, [onMyLocation, userLocation]);*/
 
   useEffect(() => {
     const northeastLat = viewport.northeast.lat;
     const southwestLat = viewport.southwest.lat;
     setLatDelta(northeastLat - southwestLat);
   }, [location, viewport]);
+
+  useFocusEffect(
+    useCallback(() => {
+      getProfilePicture(user);
+    }, [getProfilePicture, user])
+  );
+  console.log(photo);
   return (
     <>
       <Search />
@@ -77,7 +68,11 @@ const TestMap = ({ navigation, route }) => {
               longitude: coord.lng,
             }}
             pinColor={theme.colors.brand.spring}
-          />
+          >
+            <MapView.Callout>
+              <UserCallout user={user} photo={photo} />
+            </MapView.Callout>
+          </MapView.Marker>
         )}
       </Map>
     </>

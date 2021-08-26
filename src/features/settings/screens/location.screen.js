@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Alert } from "react-native";
+import React, { useEffect, useContext } from "react";
 import {
   Activity,
   ActivityContainer,
@@ -21,12 +20,10 @@ import { LoadingScreen } from "../../accounts/screens/loading.screen";
 
 export const LocationScreen = ({ navigation }) => {
   const {
-    location,
     keyword,
     coord,
     isFetching,
     getLocationHandler,
-    checkLocationHandler,
     onSkip,
     checkLocation,
   } = useContext(LocationContext);

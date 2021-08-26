@@ -9,6 +9,7 @@ import {
   ContentContainer,
   ButtonContainer,
   Scroll,
+  Slider,
 } from "./filters-modal.styles";
 import { BodyButton } from "../../../components/buttons/body.buttons";
 import { FilterSwitch } from "../../../components/filters/FilterSwitch";
