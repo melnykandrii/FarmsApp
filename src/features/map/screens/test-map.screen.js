@@ -59,7 +59,7 @@ export const FarmsMap = ({ navigation }) => {
     </>
   );
 };
-export const MapScreen = ({ navigation }) => {
+export const TestScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   if (!location) {
     return (

@@ -12,7 +12,7 @@ import { MapCallout } from "../components/map-callout.component";
 import { theme } from "../../../infrastructure/theme";
 import { UserCallout } from "../components/map-user-callout.component";
 
-const TestMap = ({ navigation }) => {
+const FarmsMap = ({ navigation }) => {
   const { coord, location } = useContext(LocationContext);
   const { farms = [] } = useContext(FarmsContext);
   const { user, photo, getProfilePicture } = useContext(AuthenticationContext);
@@ -78,7 +78,7 @@ const TestMap = ({ navigation }) => {
     </>
   );
 };
-export const TestMapScreen = ({ navigation, route }) => {
+export const MapScreen = ({ navigation, route }) => {
   const { location } = useContext(LocationContext);
   if (!location) {
     return (
@@ -90,5 +90,5 @@ export const TestMapScreen = ({ navigation, route }) => {
       />
     );
   }
-  return <TestMap navigation={navigation} route={route} />;
+  return <FarmsMap navigation={navigation} route={route} />;
 };

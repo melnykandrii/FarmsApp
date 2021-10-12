@@ -1,6 +1,5 @@
-const liveHost = "https://us-central1-farmsnearbyserv.cloudfunctions.net";
-const localHost =
-  "https://eed1-24-203-155-215.ngrok.io/farmsnearbyserv/us-central1";
+const liveHost = "https://us-central1-nearmefunc.cloudfunctions.net";
+const localHost = "https://afd6-24-203-155-215.ngrok.io/nearmefunc/us-central1";
 export const isDevelopment = process.env.NODE_ENV === "development";
-export const isMock = true;
+export const isMock = false;
 export const host = isDevelopment ? localHost : liveHost;

@@ -1,6 +1,8 @@
 {
   "projects": {
-    "prod": "mealsnearme",
-    "default": "farmsnearbyserv"
-  }
+    "default": "nearmefunc",
+    "production": "nearmefunc",
+    "staging": "nearmestaging"
+  },
+  "targets": {}
 }

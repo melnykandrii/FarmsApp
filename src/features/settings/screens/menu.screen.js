@@ -76,7 +76,7 @@ export const MenuScreen = ({ navigation }) => {
         </List.Section>
       </MenuContainer>
       <VersionContainer>
-        <Text>fnb/release v.0.0.1</Text>
+        <Text>fnb/release v.1.0.1</Text>
       </VersionContainer>
     </MenuBackground>
   );

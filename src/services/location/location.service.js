@@ -16,7 +16,7 @@ import { host, isMock } from "../../utils/env";
     resolve(locationMock);
   });*/
 //};
-
+/*
 export const locationRequest = (searchTerm) => {
   return fetch(`${host}/geocode?city=${searchTerm}&mock=${isMock}`).then(
     (res) => {
@@ -31,6 +31,32 @@ export const revLocationRequest = (mylocation) => {
   ).then((res) => {
     return res.json();
   });
+};
+*/
+export const locationRequest = async (searchTerm) => {
+  const response = await fetch(
+    `${host}/geocode?city=${searchTerm}&mock=${isMock}`
+  );
+
+  const res = await response.json();
+  console.log(res);
+  if (!res.status === "OK") {
+    throw new Error("Something went wrong!");
+  }
+  return res;
+};
+
+export const revLocationRequest = async (mylocation) => {
+  const response = await fetch(
+    `${host}/reverseGeocode?mycoord=${mylocation.lat},${mylocation.lng}&mock=${isMock}`
+  );
+
+  const res = await response.json();
+  console.log(res.status);
+  if (!res.status === "OK") {
+    throw new Error("Something went wrong!");
+  }
+  return res;
 };
 
 export const locationTransform = (result) => {

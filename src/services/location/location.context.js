@@ -61,7 +61,7 @@ export const LocationContextProvider = ({ children }) => {
 
   const onSkip = () => {
     setIsLoading(true);
-    setKeyword("Toronto");
+    setKeyword("Montreal");
   };
 
   const onSearch = (searchKeyword) => {
@@ -175,7 +175,6 @@ export const LocationContextProvider = ({ children }) => {
     try {
       const jsonValue = value;
       await AsyncStorage.setItem(`@keyword-${uid}`, jsonValue);
-      console.log(jsonValue);
     } catch (e) {
       console.log("error storing", e);
     }

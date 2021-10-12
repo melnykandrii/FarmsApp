@@ -1,6 +1,6 @@
 import React from "react";
-import { CartRefresher } from "../../../components/refresher/refresher.component";
+import { EmptyState } from "../../../components/empty-screens/empty-state.component";
 
 export const CheckoutSuccessScreen = () => {
-  return <CartRefresher text="Success!" icon="check-bold" />;
+  return <EmptyState label="Success!" icon="check-bold" />;
 };

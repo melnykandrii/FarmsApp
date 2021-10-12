@@ -74,7 +74,7 @@ export const FarmsScreen = ({ navigation, route }) => {
       setFilterKeywordR("farms");
     }
     if (isBlueberry) {
-      setFilterKeywordB("blueberries");
+      setFilterKeywordB("blueberry");
     } else {
       setFilterKeywordB("farm");
     }
@@ -96,6 +96,8 @@ export const FarmsScreen = ({ navigation, route }) => {
       !isPumpkin
     ) {
       setFilterKeywordS("vegetables");
+      setFilterKeywordP("self");
+      setFilterKeywordB("near");
     }
   }, [isApple, isBlueberry, isPumpkin, isRaspberry, isStrawberry]);
 
@@ -186,7 +188,7 @@ export const FarmsScreen = ({ navigation, route }) => {
               </TouchableOpacity>
             );
           }}
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item, i) => item.name + i}
           refreshControl={
             <RefreshControl
               refreshing={refreshing}

@@ -9,9 +9,9 @@ export const FarmsContext = createContext();
 export const FarmsContextProvider = ({ children }) => {
   const [filterS, setFilterS] = useState("vegetables");
   const [filterR, setFilterR] = useState("farms");
-  const [filterB, setFilterB] = useState("farms");
+  const [filterB, setFilterB] = useState("self");
   const [filterA, setFilterA] = useState("farm");
-  const [filterP, setFilterP] = useState("farm");
+  const [filterP, setFilterP] = useState("near");
   const [farms, setFarms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);

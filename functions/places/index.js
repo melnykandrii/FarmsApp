@@ -35,7 +35,7 @@ module.exports.placesRequest = (request, response, client) => {
       params: {
         location: location,
         radius: 50000,
-        keyword: `self+picking+${key1}+${key2}+${key3}+${key4}+${key5}+farm`,
+        keyword: `self+picking+${key1}+${key2}+${key3}+${key4}+${key5}`,
         key: functions.config().google.key,
       },
       timeout: 1000,

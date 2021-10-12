@@ -35,6 +35,7 @@ export const CheckOutScreen = ({ navigation }) => {
         setIsLoading(false);
         clearCart();
         navigation.navigate("CheckoutSuccess");
+        setTimeout(() => navigation.goBack(), 5000);
       })
       .catch((err) => {
         setIsLoading(false);
