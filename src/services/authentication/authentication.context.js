@@ -1,4 +1,5 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import {
   loginRequest,
@@ -13,11 +14,23 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  const [retriveUser, setRetriveUser] = useState(true);
+  const [photo, setPhoto] = useState(null);
+
+  useEffect(() => {
+    setRetriveUser(false);
+  }, []);
+
+  const getProfilePicture = async (currentUser) => {
+    const photoUri = await AsyncStorage.getItem(`${currentUser.uid}-photo`);
+    setPhoto(photoUri);
+  };
 
   authStateChanged((usr) => {
     if (usr) {
       setUser(usr);
       setIsLoading(false);
+      setRetriveUser(false);
     } else {
     }
   });
@@ -69,10 +82,13 @@ export const AuthenticationContextProvider = ({ children }) => {
         isAuthenticated: !!user,
         user,
         isLoading,
+        photo,
+        getProfilePicture,
         error,
         onLogin,
         onSignUp,
         onLogOut,
+        retriveUser,
       }}
     >
       {children}

@@ -4,7 +4,7 @@ import { FarmInfoCard } from "../../farms/components/farm-info-card.component";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { theme } from "../../../infrastructure/theme";
 import { FavList } from "../components/fav-list.style.component";
-import { FavouritesRefresher } from "../../../components/refresher/refresher.component";
+import { EmptyState } from "../../../components/empty-screens/empty-state.component";
 
 const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
@@ -48,6 +48,10 @@ export const FavouritesScreen = ({ navigation }) => {
       }
     />
   ) : (
-    <FavouritesRefresher text="No favourites yet" icon="heart-off" />
+    <EmptyState
+      label="No favourites yet!"
+      description="Please add one to see it in here."
+      icon="heart-off"
+    />
   );
 };

@@ -101,4 +101,26 @@ module.exports.locations = {
       },
     ],
   },
+  paris: {
+    results: [
+      {
+        geometry: {
+          location: {
+            lat: 48.856614,
+            lng: 2.3522219,
+          },
+          viewport: {
+            northeast: {
+              lat: 48.9021449,
+              lng: 2.4699208,
+            },
+            southwest: {
+              lat: 48.815573,
+              lng: 2.224199,
+            },
+          },
+        },
+      },
+    ],
+  },
 };

@@ -1,8 +1,15 @@
 import React from "react";
-import { CreditCardInput } from "react-native-credit-card-input";
+import { LogBox } from "react-native";
+import {
+  CreditCardInput,
+  LiteCreditCardInput,
+} from "react-native-credit-card-input";
 import { cardTokenRequest } from "../../../services/checkout/checkout.service";
 
 export const CreditCard = ({ name, onSuccess, onError }) => {
+  LogBox.ignoreLogs([
+    "Warning: componentWillReceiveProps has been renamed, and is not recommended for use. See https://fb.me/react-unsafe-component-lifecycles for details.",
+  ]);
   // method handle the input data
   const onChange = async (cartInfo) => {
     const { values, status } = cartInfo;
@@ -25,5 +32,5 @@ export const CreditCard = ({ name, onSuccess, onError }) => {
       }
     }
   };
-  return <CreditCardInput onChange={onChange} />;
+  return <LiteCreditCardInput onChange={onChange} />;
 };

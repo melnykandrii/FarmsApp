@@ -1,30 +1,36 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
+
+import { useFocusEffect } from "@react-navigation/native";
 import MapView from "react-native-maps";
-import styled from "styled-components/native";
 import { LocationContext } from "../../../services/location/location.context";
 import { FarmsContext } from "../../../services/farms/farms.context";
 
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { Map } from "../styles/map.styles";
 import { Search } from "../components/search.component";
 import { MapCallout } from "../components/map-callout.component";
+import { theme } from "../../../infrastructure/theme";
+import { UserCallout } from "../components/map-user-callout.component";
 
-const Map = styled(MapView)`
-  width: 100%;
-  height: 100%;
-`;
-
-export const FarmsMap = ({ navigation }) => {
-  const { location } = useContext(LocationContext);
+const FarmsMap = ({ navigation }) => {
+  const { coord, location } = useContext(LocationContext);
   const { farms = [] } = useContext(FarmsContext);
-
+  const { user, photo, getProfilePicture } = useContext(AuthenticationContext);
   const [latDelta, setLatDelta] = useState(0);
   const { lat, lng, viewport } = location;
-  //console.log(location);
 
   useEffect(() => {
     const northeastLat = viewport.northeast.lat;
     const southwestLat = viewport.southwest.lat;
     setLatDelta(northeastLat - southwestLat);
   }, [location, viewport]);
+
+  useFocusEffect(
+    useCallback(() => {
+      getProfilePicture(user);
+    }, [getProfilePicture, user])
+  );
+  console.log(photo);
   return (
     <>
       <Search />
@@ -54,11 +60,25 @@ export const FarmsMap = ({ navigation }) => {
             </MapView.Marker>
           );
         })}
+        {coord && (
+          <MapView.Marker
+            title="My location"
+            coordinate={{
+              latitude: coord.lat,
+              longitude: coord.lng,
+            }}
+            pinColor={theme.colors.brand.spring}
+          >
+            <MapView.Callout>
+              <UserCallout user={user} photo={photo} />
+            </MapView.Callout>
+          </MapView.Marker>
+        )}
       </Map>
     </>
   );
 };
-export const MapScreen = ({ navigation }) => {
+export const MapScreen = ({ navigation, route }) => {
   const { location } = useContext(LocationContext);
   if (!location) {
     return (
@@ -70,5 +90,5 @@ export const MapScreen = ({ navigation }) => {
       />
     );
   }
-  return <FarmsMap navigation={navigation} />;
+  return <FarmsMap navigation={navigation} route={route} />;
 };
